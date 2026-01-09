@@ -1,0 +1,99 @@
+X expose to Y	X protect from Y
+X differ from Y	Y resemble X
+X distinguish from Y	Y associate with X
+X know as Y	X resemble Y
+X protect from Y	X expose to Y
+X associate with Y	Y occur X
+X characterize by Y	Y distinguish from X
+X distinguish from Y	Y have X
+X derive from Y	X kill Y
+X include Y	Y differ from X
+X have Y	Y distinguish from X
+X produce by Y	X destroy Y
+X derive from Y	X convert to Y
+X be in Y	X contain Y
+X be in Y	X have Y
+X derive from Y	X be against Y
+X contain Y	X be in Y
+X include Y	Y substitute for X
+X resemble Y	Y differentiate from X
+X simulate Y	X confound with Y
+X convert to Y	X derive from Y
+X produce Y	Y kill X
+X treat by Y	Y produce X
+X be against Y	X derive from Y
+X resemble Y	Y confuse with X
+X distinguish from Y	Y confound with X
+X associate with Y	Y distinguish from X
+X be in Y	Y occur in X
+X avoid in Y	X use in Y
+X prevent Y	X produce Y
+X differentiate from Y	Y resemble X
+X resemble Y	X confound with Y
+X kill Y	X derive from Y
+X get Y	Y kill X
+X contract Y	X die of Y
+X include Y	X confuse with Y
+X differ from Y	Y include X
+X substitute for Y	Y include X
+X be against Y	Y produce X
+X produce Y	Y use in X
+X produce by Y	X be against Y
+X simulate Y	X differ from Y
+X mimic Y	Y differentiate from X
+X characterize by Y	Y include X
+X correct Y	X indicate for Y
+X expose to Y	X die of Y
+X resemble Y	X know as Y
+X occur Y	Y associate with X
+X resemble Y	X distinguish from Y
+X confuse with Y	X include Y
+X produce by Y	X kill Y
+X produce Y	Y give to X
+X contract Y	X die from Y
+X be in Y	Y find in X
+X distinguish from Y	X characterize by Y
+X produce Y	Y be against X
+X resemble Y	Y distinguish from X
+X use in Y	Y produce X
+X have Y	X be in Y
+X suffer from Y	X die of Y
+X treat with Y	X produce Y
+X destroy Y	X produce by Y
+X simulate Y	Y confound with X
+X distinguish from Y	X associate with Y
+X give to Y	Y produce X
+X distinguish from Y	X confound with Y
+X develop Y	X die of Y
+X differ from Y	X confound with Y
+X characterize by Y	X distinguish from Y
+X produce Y	X prevent Y
+X resemble Y	Y differ from X
+X indicate for Y	X correct Y
+X distinguish from Y	X resemble Y
+X have Y	X die of Y
+X destroy Y	X derive from Y
+X kill Y	X produce by Y
+X associate with Y	X distinguish from Y
+X occur in Y	Y be in X
+X contract Y	Y kill X
+X resemble Y	X differ from Y
+X produce Y	Y destroy X
+X constrict Y	X dilate Y
+X produce Y	X treat with Y
+X be against Y	X produce by Y
+X dilate Y	X constrict Y
+X use in Y	X avoid in Y
+X get Y	X die of Y
+X produce Y	Y treat by X
+X simulate Y	Y distinguish from X
+X kill Y	Y produce X
+X derive from Y	X destroy Y
+X distinguish from Y	Y characterize by X
+X resemble Y	X confuse with Y
+X find in Y	Y be in X
+X destroy Y	Y produce X
+X convert to Y	Y convert to X
+X have Y	Y kill X
+X differentiate from Y	Y mimic X
+X get Y	X die from Y
