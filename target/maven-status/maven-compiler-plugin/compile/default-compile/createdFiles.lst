@@ -1,0 +1,17 @@
+hadoop\examples\Job2A_Marginals$MapperClass.class
+hadoop\examples\Job1TripleCounts.class
+hadoop\examples\Job1TripleCounts$ReducerClass.class
+hadoop\examples\Job2B_ComputeMI.class
+hadoop\packages\BiarcsExtractor.class
+hadoop\packages\TripleKey.class
+hadoop\examples\Job1TripleCounts$MapperClass.class
+hadoop\examples\Job1TripleCounts$CombinerClass.class
+hadoop\packages\BiarcsParser.class
+hadoop\examples\Job2A_Marginals.class
+hadoop\examples\Job2A_Marginals$ReducerClass.class
+hadoop\packages\Stemmer.class
+hadoop\packages\BiarcsExtractor$Event.class
+hadoop\packages\BiarcsParser$Tok.class
+hadoop\examples\Job2A_Marginals$CombinerClass.class
+hadoop\examples\Job2B_ComputeMI$MapperClass.class
+hadoop\packages\BiarcsParser$Record.class

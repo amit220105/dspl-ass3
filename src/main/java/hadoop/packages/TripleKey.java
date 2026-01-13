@@ -1,7 +1,11 @@
 package hadoop.packages;
 
-import org.apache.hadoop.io.Writable;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
+
 import org.apache.hadoop.io.WritableComparable;
+import org.apache.hadoop.io.WritableUtils;
 
 public class TripleKey implements WritableComparable<TripleKey> {
     private String predicate; // p
@@ -22,16 +26,16 @@ public class TripleKey implements WritableComparable<TripleKey> {
 
     @Override
     public void write(DataOutput out) throws IOException {
-        Writable.utils.writeString(out, predicate);
-        Writable.utils.writeString(out, slot);
-        Writable.utils.writeString(out, filler);
+        WritableUtils.writeString(out, predicate);
+        WritableUtils.writeString(out, slot);
+        WritableUtils.writeString(out, filler);
     }
 
     @Override
     public void readFields(DataInput in) throws IOException {
-        predicate = Writable.utils.readString(in);
-        slot = Writable.utils.readString(in);
-        filler = Writable.utils.readString(in);
+        predicate = WritableUtils.readString(in);
+        slot = WritableUtils.readString(in);
+        filler = WritableUtils.readString(in);
     }
 
     @Override

@@ -1,17 +1,21 @@
 package hadoop.examples;
 
-import java.io.File;
+
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.List;
+import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FileStatus;
+import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -41,7 +45,7 @@ public class Job2B_ComputeMI {
             for (FileStatus status : fs.listStatus(job2APath)) {
                 String fileName = status.getPath().getName();
                 if (fileName.startsWith("part-")) continue; // skip hidden files
-                try(FsDataInputStream in = fs.open(status.getPath());
+                try(FSDataInputStream in = fs.open(status.getPath());
                     BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
                     String line;
                     while ((line = br.readLine()) != null) {
@@ -76,7 +80,7 @@ public class Job2B_ComputeMI {
         }
 
         @Override
-        protected void map(LongWritable key, org.w3c.dom.Text value, Context context) throws IOException, InterruptedException {
+        protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             String line = value.toString().trim();
             if (line.isEmpty()) return;
             String[] parts = line.split("\t");
@@ -95,8 +99,8 @@ public class Job2B_ComputeMI {
             Long sw = swMap.get(slot + "\t" + w);
             Long s = sMap.get(slot);
             if (ps == null || sw == null || s == null) return; // missing marginals
-            if (c <= 0 || ps <= 0 || sw <= 0 || s <= 0) return;
-            double mi = Math.log((double)c * (double)s / ((double)ps * (double)sw));
+            if (count <= 0 || ps <= 0 || sw <= 0 || s <= 0) return;
+            double mi = Math.log((double)count * (double)s / ((double)ps * (double)sw));
             outKey.set(p + "\t" + slot + "\t" + w);
             outValue.set(""+mi);
             context.write(outKey, outValue);

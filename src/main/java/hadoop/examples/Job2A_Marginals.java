@@ -1,7 +1,6 @@
 package hadoop.examples;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -16,13 +15,12 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 
-public class Job1TripleCounts {
+public class Job2A_Marginals {
 
 
     public static class MapperClass extends Mapper<LongWritable, Text, Text, LongWritable> {
             private final Text outKey = new Text();
             private final LongWritable outValue = new LongWritable();
-            BiarcsExtractor extractor = new BiarcsExtractor();
 
 
         @Override
@@ -34,24 +32,33 @@ public class Job1TripleCounts {
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             String line = value.toString().trim();
             if (line.isEmpty()) return;
-            BiarcsParser.Record record;
+            String[] parts = line.split("\t");
+            if (parts.length != 4) return; // invalid line
+            String p = parts[0];
+            String slot = parts[1];
+            String w = parts[2];
+            long count;
             try {
-                record = extractor.parseLine(line);
-                if (record == null) return; // skip invalid lines
-            } catch (Exception e) {
-                return;
+                count = Long.parseLong(parts[3]);
+            } catch (NumberFormatException e) {
+                return; // invalid count
             }
-            List<BiarcsExtractor.Event> events = extractor.extract(record);
-            for (BiarcsExtractor.Event event : events) {
-                outKey.set(event.predicateKey + "\t" + event.slot + "\t" + event.filler);
-                outValue.set(event.count);
-                context.write(outKey, outValue);
-
-            }
+            // Emit marginal key: (p,slot,*) with the same count
+            outKey.set("PS\t" + p + "\t" +slot);
+            outValue.set(count);
+            context.write(outKey, outValue);
+            // Emit marginal key: (*,slot,w) with the same count
+            outKey.set("SW\t" + slot + "\t" +w);
+            outValue.set(count);
+            context.write(outKey, outValue);
+            //Global marginal key: (*,slot,*) with the same count
+            outKey.set("S\t" + slot);
+            outValue.set(count);
+            context.write(outKey, outValue);
         }
     }
 
-    /** Reducer: sum counts for each (p,slot,w) */
+
     public static class ReducerClass extends Reducer<Text, LongWritable, Text, LongWritable> {
 
         private final LongWritable out = new LongWritable();
@@ -69,7 +76,7 @@ public class Job1TripleCounts {
         }
     }
 
-    // Optional combiner: SAME as reducer (safe because sum is associative/commutative)
+
     public static class CombinerClass extends Reducer<Text, LongWritable, Text, LongWritable> {
         private final LongWritable out = new LongWritable();
 
@@ -94,11 +101,11 @@ public class Job1TripleCounts {
 
         Configuration conf = new Configuration();
 
-        Job job = Job.getInstance(conf, "Job1 - Triple Counts |p,slot,w|");
-        job.setJarByClass(Job1TripleCounts.class);
+        Job job = Job.getInstance(conf, "Job2A - Marginals PS/SW and S");
+        job.setJarByClass(Job2A_Marginals.class);
 
         job.setMapperClass(MapperClass.class);
-        job.setCombinerClass(CombinerClass.class); 
+        job.setCombinerClass(CombinerClass.class);
         job.setReducerClass(ReducerClass.class);
 
         job.setMapOutputKeyClass(Text.class);

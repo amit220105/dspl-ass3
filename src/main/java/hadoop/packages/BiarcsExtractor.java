@@ -1,6 +1,13 @@
 package hadoop.packages;
 
-import org.apache.hadoop.yarn.webapp.hamlet.Hamlet.B;
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class BiarcsExtractor {
     public static class Event {
@@ -17,7 +24,7 @@ public class BiarcsExtractor {
         }
     }
     public List<Event> extract(BiarcsParser.Record r) {
-        if (r == null) return List.of();
+        if (r == null) return Collections.emptyList();
         BiarcsParser.Tok [] byId = new BiarcsParser.Tok[r.toks.size() + 1];
         // index tokens by their ID for easy access
         for (BiarcsParser.Tok t : r.toks) byId[t.id] = t;
@@ -29,7 +36,7 @@ public class BiarcsExtractor {
                 nouns.add(t);
             }
         }
-        if (nouns.size() < 2) return List.of();
+        if (nouns.size() < 2) return Collections.emptyList();
 
         List<Event> out = new ArrayList<>();
 
@@ -112,7 +119,7 @@ public class BiarcsExtractor {
         while (!q.isEmpty()) {
             int cur = q.removeFirst();
             if (cur == goal) break;
-            for (int nxt : adj.getOrDefault(cur, List.of())) {
+            for (int nxt : adj.getOrDefault(cur, Collections.<Integer>emptyList())) {
                 if (parent.containsKey(nxt)) continue;
                 parent.put(nxt, cur);
                 q.addLast(nxt);
