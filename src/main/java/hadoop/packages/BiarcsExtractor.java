@@ -83,12 +83,32 @@ public class BiarcsExtractor {
     }
 
     private static Integer chooseVerbOnPath(BiarcsParser.Tok[] byId, List<Integer> path) {
+
         for (int id : path) {
             BiarcsParser.Tok t = byId[id];
-            if (t != null && isVerb(t.pos)) return id;
+            if (t != null && isVerb(t.pos) && !isAuxVerb(t.word)) return id;
         }
         return null;
+
     }
+
+    private static String stemLower(String w) {
+    if (w == null || w.isEmpty()) return w;
+    String lw = w.toLowerCase(Locale.ROOT);
+    Stemmer s = new Stemmer();
+    s.add(lw.toCharArray(), lw.length());
+    s.stem();
+    return s.toString();
+    }   
+
+    private static boolean isAuxVerb(String w) {
+    if (w == null) return false;
+    String x = w.toLowerCase(Locale.ROOT);
+    return x.equals("be") || x.equals("is") || x.equals("are") || x.equals("was") || x.equals("were") ||
+           x.equals("been") || x.equals("being") ||
+           x.equals("have") || x.equals("has") || x.equals("had") ||
+           x.equals("do") || x.equals("does") || x.equals("did");
+}
 
     private static String buildPredicateKey(BiarcsParser.Tok[] byId, List<Integer> path, int verbId) {
         BiarcsParser.Tok verb = byId[verbId];
@@ -96,7 +116,7 @@ public class BiarcsExtractor {
 
         List<String> parts = new ArrayList<>();
         parts.add("X");
-        parts.add(normWord(verb.word));
+        parts.add(stemLower(verb.word));
 
         // include IN/TO tokens along the path (excluding endpoints and the verb)
         for (int k = 1; k < path.size() - 1; k++) {

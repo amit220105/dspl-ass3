@@ -43,28 +43,37 @@ public class Job2B_ComputeMI {
             Path job2APath = new Path(job2APathStr);
             FileSystem fs = FileSystem.get(conf);
             for (FileStatus status : fs.listStatus(job2APath)) {
+                if (!status.isFile()) continue;
                 String fileName = status.getPath().getName();
-                if (fileName.startsWith("part-")) continue; // skip hidden files
-                try(FSDataInputStream in = fs.open(status.getPath());
+                // skip _SUCCESS and hidden temp files
+                if (fileName.startsWith("_") || fileName.startsWith(".")) continue;
+                // read only reducer/mapper outputs
+                if (!fileName.startsWith("part-")) continue;
+                try (FSDataInputStream in = fs.open(status.getPath());
                     BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
+
                     String line;
                     while ((line = br.readLine()) != null) {
                         line = line.trim();
                         if (line.isEmpty()) continue;
+
                         String[] parts = line.split("\t");
-                        if (parts.length < 3) continue; // invalid line
+                        if (parts.length < 3) continue;
+
                         if (parts[0].equals("PS")) {
-                            if (parts.length != 4) continue; // invalid line
+                            if (parts.length != 4) continue;
                             long ps = Long.parseLong(parts[3]);
-                            if (ps >0) psMap.put(parts[1] + "\t" + parts[2], ps);
+                            if (ps > 0) psMap.put(parts[1] + "\t" + parts[2], ps);
+
                         } else if (parts[0].equals("SW")) {
-                            if (parts.length != 4) continue; // invalid line
+                            if (parts.length != 4) continue;
                             long sw = Long.parseLong(parts[3]);
-                            if (sw >0) swMap.put(parts[1] + "\t" + parts[2], sw);
+                            if (sw > 0) swMap.put(parts[1] + "\t" + parts[2], sw);
+
                         } else if (parts[0].equals("S")) {
-                            if (parts.length != 3) continue; // invalid line
+                            if (parts.length != 3) continue;
                             long s = Long.parseLong(parts[2]);
-                            if (s >0) sMap.put(parts[1], s);
+                            if (s > 0) sMap.put(parts[1], s);
                         }
                     }
                 }
@@ -109,32 +118,44 @@ public class Job2B_ComputeMI {
 
 
 
-    public static void main(String[] args) throws Exception {
-        if (args.length != 3) {
-            System.err.println("invalid input");
-            System.exit(1);
-        }
+public static void main(String[] args) throws Exception {
+    System.err.println("Job2B_ComputeMI args=" + java.util.Arrays.toString(args));
 
-        Configuration conf = new Configuration();
-        conf.set("job2AOutputPath", args[1]);
-
-        Job job = Job.getInstance(conf, "Job2B - Compute MI from Job2A marginals and Job1 counts");
-        job.setJarByClass(Job2B_ComputeMI.class);
-
-        job.setMapperClass(MapperClass.class);
-        job.setNumReduceTasks(0); // map-only job
-
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(Text.class);
-        job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(Text.class);
-
-        job.setInputFormatClass(TextInputFormat.class);
-        job.setOutputFormatClass(TextOutputFormat.class);
-
-        FileInputFormat.addInputPath(job, new Path(args[0]));
-        FileOutputFormat.setOutputPath(job, new Path(args[2]));
-
-        System.exit(job.waitForCompletion(true) ? 0 : 1);
+    int off = 0;
+    // If EMR injected the class name as args[0], skip it
+    if (args.length >= 4 && args[0].contains(".") && !args[0].startsWith("s3://")) {
+        off = 1;
     }
+
+    if (args.length < off + 3) {
+        System.err.println("invalid input. args=" + java.util.Arrays.toString(args));
+        System.exit(1);
+    }
+
+    String job1Out  = args[off];       // input for Job2B = Job1 output
+    String job2aOut = args[off + 1];   // Job2A output path (for loading marginals)
+    String job2bOut = args[off + 2];   // output for Job2B
+
+    Configuration conf = new Configuration();
+    conf.set("job2AOutputPath", job2aOut);
+
+    Job job = Job.getInstance(conf, "Job2B - Compute MI from Job2A marginals and Job1 counts");
+    job.setJarByClass(Job2B_ComputeMI.class);
+
+    job.setMapperClass(MapperClass.class);
+    job.setNumReduceTasks(0); // map-only job
+
+    job.setMapOutputKeyClass(Text.class);
+    job.setMapOutputValueClass(Text.class);
+    job.setOutputKeyClass(Text.class);
+    job.setOutputValueClass(Text.class);
+
+    job.setInputFormatClass(TextInputFormat.class);
+    job.setOutputFormatClass(TextOutputFormat.class);
+
+    FileInputFormat.addInputPath(job, new Path(job1Out));
+    FileOutputFormat.setOutputPath(job, new Path(job2bOut));
+
+    System.exit(job.waitForCompletion(true) ? 0 : 1);
+}
 }

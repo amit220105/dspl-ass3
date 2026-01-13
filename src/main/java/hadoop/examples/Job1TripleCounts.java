@@ -90,33 +90,41 @@ public class Job1TripleCounts {
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        if (args.length != 2) {
-            System.err.println("invalid input");
-            System.exit(1);
-        }
+public static void main(String[] args) throws Exception {
+    System.err.println("Job1TripleCounts args=" + java.util.Arrays.toString(args));
 
-        Configuration conf = new Configuration();
-
-        Job job = Job.getInstance(conf, "Job1 - Triple Counts |p,slot,w|");
-        job.setJarByClass(Job1TripleCounts.class);
-
-        job.setMapperClass(MapperClass.class);
-        job.setCombinerClass(CombinerClass.class); 
-        job.setReducerClass(ReducerClass.class);
-
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(LongWritable.class);
-
-        job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(LongWritable.class);
-
-        job.setInputFormatClass(TextInputFormat.class);
-        job.setOutputFormatClass(TextOutputFormat.class);
-
-        FileInputFormat.addInputPath(job, new Path(args[0]));
-        FileOutputFormat.setOutputPath(job, new Path(args[1]));
-
-        System.exit(job.waitForCompletion(true) ? 0 : 1);
+    int off = 0;
+    if (args.length >= 3 && args[0].contains(".") && !args[0].startsWith("s3://")) {
+        off = 1; // skip mainClass being injected
     }
+
+    if (args.length < off + 2) {
+        System.err.println("invalid input. args=" + java.util.Arrays.toString(args));
+        System.exit(1);
+    }
+
+    String in = args[off];
+    String out = args[off + 1];
+
+    Configuration conf = new Configuration();
+    Job job = Job.getInstance(conf, "Job1 - Triple Counts |p,slot,w|");
+    job.setJarByClass(Job1TripleCounts.class);
+
+    job.setMapperClass(MapperClass.class);
+    job.setCombinerClass(CombinerClass.class);
+    job.setReducerClass(ReducerClass.class);
+
+    job.setMapOutputKeyClass(Text.class);
+    job.setMapOutputValueClass(LongWritable.class);
+    job.setOutputKeyClass(Text.class);
+    job.setOutputValueClass(LongWritable.class);
+
+    job.setInputFormatClass(TextInputFormat.class);
+    job.setOutputFormatClass(TextOutputFormat.class);
+
+    FileInputFormat.addInputPath(job, new Path(in));
+    FileOutputFormat.setOutputPath(job, new Path(out));
+
+    System.exit(job.waitForCompletion(true) ? 0 : 1);
+}
 }
