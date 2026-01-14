@@ -109,9 +109,11 @@ public class Job2B_ComputeMI {
             Long s = sMap.get(slot);
             if (ps == null || sw == null || s == null) return; // missing marginals
             if (count <= 0 || ps <= 0 || sw <= 0 || s <= 0) return;
+
             double mi = Math.log((double)count * (double)s / ((double)ps * (double)sw));
+            if (mi <= 0.0) return; // PMI+ (keep only positive PMI)
             outKey.set(p + "\t" + slot + "\t" + w);
-            outValue.set(""+mi);
+            outValue.set(Double.toString(mi));
             context.write(outKey, outValue);
         }    
     }

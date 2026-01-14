@@ -89,8 +89,7 @@ public class Job3B_ComputeSimilarity {
 
         @Override
         public int compareTo(SimilarityResult other) {
-            // Higher similarity first
-            return Double.compare(other.similarity, this.similarity);
+            return Double.compare(this.similarity, other.similarity); // smallest first
         }
     }
 

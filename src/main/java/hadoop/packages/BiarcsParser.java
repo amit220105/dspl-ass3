@@ -8,81 +8,68 @@ import java.util.Map;
 public class BiarcsParser {
 
     public static class Tok {
-        public final int id;        // 1..N within the record
-        public final String word;   // surface word
-        public final String pos;    // POS tag
-        public final String rel;    // dependency relation label
-        public final int head;      // 0..N (0 = ROOT)
+        public final int id;
+        public final String word;
+        public final String pos;
+        public final String rel;
+        public final int head;
+        
         public Tok(int id, String word, String pos, String rel, int head) {
-            this.id = id; this.word = word; this.pos = pos; this.rel = rel; this.head = head;
-        }
-        @Override public String toString() {
-            return id + ":" + word + "/" + pos + "/" + rel + "/" + head;
+            this.id = id;
+            this.word = word;
+            this.pos = pos;
+            this.rel = rel;
+            this.head = head;
         }
     }
 
     public static class Record {
-        public final String lemma;      // first column 
-        public final List<Tok> toks;    // groups
-        public final long count;        // last column
-        public Record(String lemma, List<Tok> toks, long count) {
-            this.lemma = lemma; this.toks = toks; this.count = count;
+        public final List<Tok> toks;
+        public final long count;
+        
+        public Record(List<Tok> toks, long count) {
+            this.toks = toks;
+            this.count = count;
         }
     }
 
-    public static Record parseLine(String line) {
-        line = line.trim();
-        if (line.isEmpty()) return null;
-
-        // split by whitespace; format: lemma + groups + count
-        String[] parts = line.split("\\s+");
-        if (parts.length < 3) {
-            throw new IllegalArgumentException("Bad biarcs line (need lemma + >=1 group + count): " + line);
+public static Record parseLine(String line) {
+    line = line.trim();
+    if (line.isEmpty()) return null;
+    // head_word \t syntactic-ngram \t total_count \t ...
+    String[] parts = line.split("\t");
+    if (parts.length < 3) {
+        throw new IllegalArgumentException("Expected at least 3 tab-separated fields: " + line);
+    }
+    String ngram = parts[1];
+    long totalCount;
+    try {
+        totalCount = Long.parseLong(parts[2]);
+    } catch (NumberFormatException e) {
+        throw new IllegalArgumentException("Third field is not a count: " + parts[2]);
+    }
+    String[] tokens = ngram.split("\\s+");
+    List<Tok> toks = new ArrayList<>();
+    for (int i = 0; i < tokens.length; i++) {
+        String[] fields = tokens[i].split("/", 4);
+        if (fields.length != 4) {
+            throw new IllegalArgumentException("Expected word/POS/dep/head format: " + tokens[i]);
         }
-
-        String lemma = parts[0];
-        long count;
+        String word = fields[0];
+        String pos  = fields[1];
+        String rel  = fields[2];
+        int head;
         try {
-            count = Long.parseLong(parts[parts.length - 1]);
+            head = Integer.parseInt(fields[3]);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Last field is not a count: " + parts[parts.length - 1] + " in line: " + line);
+            throw new IllegalArgumentException("Invalid head index: " + fields[3]);
         }
 
-        List<Tok> toks = new ArrayList<>();
-        int id = 1;
-        for (int i = 1; i < parts.length - 1; i++) {
-            String g = parts[i];
-            // group format: word/POS/rel/headIndex
-            // use split limit=4 to avoid accidental extra splits
-            String[] gp = g.split("/", 4);
-            if (gp.length != 4) {
-                throw new IllegalArgumentException("Bad group (expected word/POS/rel/head): " + g + " in line: " + line);
-            }
-            String word = gp[0];
-            String pos = gp[1];
-            String rel = gp[2];
-
-            int head;
-            try {
-                head = Integer.parseInt(gp[3]);
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("Bad head index in group: " + g + " line: " + line);
-            }
-
-            toks.add(new Tok(id, word, pos, rel, head));
-            id++;
-        }
-
-        // sanity: head index must be 0..N
-        int n = toks.size();
-        for (Tok t : toks) {
-            if (t.head < 0 || t.head > n) {
-                throw new IllegalArgumentException("Head out of range: " + t + " (N=" + n + ") line: " + line);
-            }
-        }
-
-        return new Record(lemma, toks, count);
+        toks.add(new Tok(i + 1, word, pos, rel, head));
     }
+    return new Record(toks, totalCount);
+}
+
 
     public static Map<Integer, List<Integer>> buildUndirectedAdj(List<Tok> toks) {
         Map<Integer, List<Integer>> adj = new HashMap<>();

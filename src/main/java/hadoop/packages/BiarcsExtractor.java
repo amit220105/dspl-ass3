@@ -55,9 +55,26 @@ public class BiarcsExtractor {
                 if (predicate == null) continue;
 
                 // X/Y assignment: subject-of-verb is X if detectable
+                int x1 = roleScoreX(n1, byId, verbId);
+                int x2 = roleScoreX(n2, byId, verbId);
+                int y1 = roleScoreY(n1, byId, verbId);
+                int y2 = roleScoreY(n2, byId, verbId);
+
                 BiarcsParser.Tok xTok = n1, yTok = n2;
-                if (isSubjectOf(n2, verbId) && !isSubjectOf(n1, verbId)) {
+
+                // prefer clearer subject for X
+                if (x2 > x1) {
                     xTok = n2; yTok = n1;
+                } else if (x1 == x2) {
+                    // if subject unclear, prefer clearer object for Y
+                    if (y2 > y1) {
+                        xTok = n1; yTok = n2;
+                    } else if (y1 > y2) {
+                        xTok = n2; yTok = n1;
+                    } else {
+                        // deterministic fallback: keep original order
+                        xTok = n1; yTok = n2;
+                    }
                 }
 
                 out.add(new Event(predicate, "X", normWord(xTok.word), r.count));
@@ -110,25 +127,63 @@ public class BiarcsExtractor {
            x.equals("do") || x.equals("does") || x.equals("did");
 }
 
-    private static String buildPredicateKey(BiarcsParser.Tok[] byId, List<Integer> path, int verbId) {
-        BiarcsParser.Tok verb = byId[verbId];
-        if (verb == null) return null;
-
-        List<String> parts = new ArrayList<>();
-        parts.add("X");
-        parts.add(stemLower(verb.word));
-
-        // include IN/TO tokens along the path (excluding endpoints and the verb)
-        for (int k = 1; k < path.size() - 1; k++) {
-            int id = path.get(k);
-            if (id == verbId) continue;
-            BiarcsParser.Tok t = byId[id];
-            if (t != null && isPrep(t.pos)) parts.add(normWord(t.word));
+private static String buildPredicateKey(BiarcsParser.Tok[] byId, List<Integer> path, int verbId) {
+    if (path.size() < 2) return null;
+    StringBuilder sb = new StringBuilder();
+    sb.append("X");
+    for (int i = 0; i < path.size() - 1; i++) {
+        int aId = path.get(i);
+        int bId = path.get(i + 1);
+        BiarcsParser.Tok a = byId[aId];
+        BiarcsParser.Tok b = byId[bId];
+        if (a == null || b == null) return null;
+        // decide direction and relation label
+        String rel;
+        String dir;
+        if (a.head == b.id) {          // a -> head(b)
+            rel = a.rel;
+            dir = "^";                 // up
+        } else if (b.head == a.id) {   // a is head of b
+            rel = b.rel;
+            dir = "v";                 // down
+        } else {
+            rel = "UNK";
+            dir = "?";
         }
-
-        parts.add("Y");
-        return String.join(" ", parts).replaceAll("\\s+", " ").trim();
+        sb.append(" --").append(rel).append(dir).append("-- ");
+        // include node label for internal nodes (especially verb and preps)
+        if (b.id == verbId) {
+            sb.append("V(").append(stemLower(b.word)).append(")");
+        } else if (isPrep(b.pos)) {
+            sb.append("P(").append(normWord(b.word)).append(")");
+        } else if (isVerb(b.pos)) {
+            sb.append("V(").append(stemLower(b.word)).append(")");
+        } else {
+            sb.append(b.pos); // or omit for compactness
+        }
     }
+    sb.append(" Y");
+    return sb.toString().replaceAll("\\s+", " ").trim();
+}
+private static int roleScoreX(BiarcsParser.Tok n, BiarcsParser.Tok[] byId, int verbId) {
+    // X = subject of verb
+    if (n.head == verbId) {
+        if ("nsubj".equals(n.rel) || "nsubjpass".equals(n.rel)) return 100;
+    }
+    return 0;
+}
+private static int roleScoreY(BiarcsParser.Tok n, BiarcsParser.Tok[] byId, int verbId) {
+    // Y = object of verb
+    if (n.head == verbId) {
+        if ("dobj".equals(n.rel) || "obj".equals(n.rel) || "iobj".equals(n.rel)) return 100;
+    }
+    // Y = pobj of prep attached to verb
+    if ("pobj".equals(n.rel)) {
+        BiarcsParser.Tok prep = byId[n.head];
+        if (prep != null && isPrep(prep.pos) && prep.head == verbId && "prep".equals(prep.rel)) return 80;
+    }
+    return 0;
+}
 
     private static List<Integer> shortestPath(Map<Integer, List<Integer>> adj, int start, int goal) {
         ArrayDeque<Integer> q = new ArrayDeque<>();
