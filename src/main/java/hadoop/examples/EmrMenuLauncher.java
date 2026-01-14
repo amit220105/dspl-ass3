@@ -63,7 +63,7 @@ public class EmrMenuLauncher {
 
             String keyName = prompt(sc, "EC2 KeyPair name (for SSH) [blank = none]", "");
             String subnetId = prompt(sc, "EC2 SubnetId [blank = default]", "");
-
+            String testSetS3 = prompt(sc, "Test-set pairs S3 URI", "s3://" + bucket + "/ass3/testset.txt");
             String input;
             if ("1".equals(choice)) {
                 input = DEFAULT_SMALL_INPUT;
@@ -75,7 +75,7 @@ public class EmrMenuLauncher {
             }
 
             try {
-                runPipeline(region, bucket, jarS3, input, releaseLabel, masterType, coreType, coreCount, keyName, subnetId);
+                runPipeline(region, bucket, jarS3, input, releaseLabel, masterType, coreType, coreCount, keyName, subnetId, testSetS3);
             } catch (Exception e) {
                 System.err.println("FAILED: " + e.getMessage());
                 e.printStackTrace(System.err);
@@ -96,7 +96,8 @@ public class EmrMenuLauncher {
             String coreType,
             int coreCount,
             String ec2KeyName,
-            String subnetId
+            String subnetId,
+            String  testSetS3
     ) {
         AmazonElasticMapReduce emr = AmazonElasticMapReduceClientBuilder
                 .standard()
@@ -118,6 +119,8 @@ public class EmrMenuLauncher {
         String job3b1Out = baseOut + "/job3b1_pair_contrib";
         String job3b2Out = baseOut + "/job3b2_pair_numerators";
         String job3b3Out = baseOut + "/job3b3_slot_sims";
+        String job3b4Out = baseOut + "/job3b4_testset_similarity";
+        
         String logsOut  = "s3://" + bucket + "/emr-logs/" + runId + "/";
 
         StepConfig step1 = new StepConfig()
@@ -207,6 +210,13 @@ public class EmrMenuLauncher {
                 .withJar(jarPathS3)
                 .withMainClass("hadoop.examples.Job3B3_FinalSimilarity")
                 .withArgs(Arrays.asList(job3b2Out, job3b0Out, job3b3Out)));
+        StepConfig step3b4 = new StepConfig()
+            .withName("Job3B4 - TestSetSimilarity")
+            .withActionOnFailure(ActionOnFailure.TERMINATE_JOB_FLOW)
+            .withHadoopJarStep(new HadoopJarStepConfig()
+                .withJar(jarPathS3)
+                .withMainClass("hadoop.examples.Job3B4_TestSetSimilarity")
+                .withArgs(Arrays.asList(job3b3Out, testSetS3, job3b4Out)));
 
         JobFlowInstancesConfig instances = new JobFlowInstancesConfig()
                 .withMasterInstanceType(masterType)
@@ -228,7 +238,7 @@ public class EmrMenuLauncher {
                 .withReleaseLabel(releaseLabel)
                 .withInstances(instances)
                 .withApplications(new Application().withName("Hadoop"))
-                .withSteps(step1, step2a, step2b1, step2b2, step3a, step3b0, step3b1, step3b2, step3b3)
+                .withSteps(step1, step2a, step2b1, step2b2, step3a, step3b0, step3b1, step3b2, step3b3, step3b4)
                 .withLogUri(logsOut)
                 .withServiceRole("EMR_DefaultRole")
                 .withJobFlowRole("EMR_EC2_DefaultRole");
@@ -244,6 +254,8 @@ public class EmrMenuLauncher {
         System.out.println("Job2B1: " + job2b1Out);
         System.out.println("Job2B2: " + job2bOut);
         System.out.println("Job3A:  " + job3aOut);
+        System.out.println("MI (Job2B2): " + job2bOut);
+        System.out.println("TestSet Similarities (Job3B4): " + job3b4Out);
         // System.out.println("Job3B:  " + job3bOut);
     }
 
