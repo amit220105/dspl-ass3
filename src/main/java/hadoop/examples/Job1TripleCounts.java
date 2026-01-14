@@ -36,21 +36,37 @@ public class Job1TripleCounts {
 
         @Override
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-            String line = value.toString().trim();
-            if (line.isEmpty()) return;
-            BiarcsParser.Record record;
-            try {
-                record = BiarcsParser.parseLine(line);
-                if (record == null) return; // skip invalid lines
-            } catch (Exception e) {
+            context.getCounter("DBG", "IN").increment(1);
+
+            String raw = value.toString();
+            if (raw.trim().isEmpty()) {
+                context.getCounter("DBG", "EMPTY").increment(1);
                 return;
             }
+
+            BiarcsParser.Record record;
+            try {
+                record = BiarcsParser.parseLine(raw);   // IMPORTANT: parse raw, not trimmed
+            } catch (Exception e) {
+                context.getCounter("DBG", "PARSE_EX").increment(1);
+                return;
+            }
+            if (record == null) {
+                context.getCounter("DBG", "PARSE_NULL").increment(1);
+                return;
+            }
+            context.getCounter("DBG", "PARSE_OK").increment(1);
             List<BiarcsExtractor.Event> events = extractor.extract(record);
+            if (events == null || events.isEmpty()) {
+                context.getCounter("DBG", "NO_EVENTS").increment(1);
+                return;
+            }
+            context.getCounter("DBG", "EVENTS").increment(events.size());
             for (BiarcsExtractor.Event event : events) {
                 outKey.set(event.predicateKey + "\t" + event.slot + "\t" + event.filler);
                 outValue.set(event.count);
                 context.write(outKey, outValue);
-
+                context.getCounter("DBG", "EMITTED").increment(1);
             }
         }
     }
@@ -108,6 +124,8 @@ public static void main(String[] args) throws Exception {
 
     Configuration conf = new Configuration();
     Job job = Job.getInstance(conf, "Job1 - Triple Counts |p,slot,w|");
+    job.getConfiguration().set("mapreduce.output.textoutputformat.separator", "\t");
+    job.getConfiguration().set("mapred.textoutputformat.separator", "\t"); // for older Hadoop
     job.setJarByClass(Job1TripleCounts.class);
 
     job.setMapperClass(MapperClass.class);

@@ -20,7 +20,7 @@ import com.amazonaws.services.elasticmapreduce.model.StepConfig;
 
 /**
  * Interactive EMR launcher for your DIRT pipeline:
- *   Job1TripleCounts -> Job2A_Marginals -> Job2B_ComputeMI
+ *   Job1TripleCounts -> Job2A_Marginals -> Job2B_ComputeMI -> Job3A_PathVectors -> Job3B_ComputeSimilarity
  *
  * Requires:
  *   - AWS creds available (AWS CLI config / env vars / instance profile)
@@ -110,6 +110,8 @@ public class EmrMenuLauncher {
         String job1Out  = baseOut + "/job1_triple_counts";
         String job2aOut = baseOut + "/job2a_marginals";
         String job2bOut = baseOut + "/job2b_mi";
+        String job3aOut = baseOut + "/job3a_path_vectors";
+        String job3bOut = baseOut + "/job3b_similarities";
         String logsOut  = "s3://" + bucket + "/emr-logs/" + runId + "/";
 
         StepConfig step1 = new StepConfig()
@@ -136,6 +138,22 @@ public class EmrMenuLauncher {
                         .withMainClass("hadoop.examples.Job2B_ComputeMI")
                         .withArgs(Arrays.asList(job1Out, job2aOut, job2bOut)));
 
+        StepConfig step3a = new StepConfig()
+                .withName("Job3A - PathVectors")
+                .withActionOnFailure(ActionOnFailure.TERMINATE_JOB_FLOW)
+                .withHadoopJarStep(new HadoopJarStepConfig()
+                        .withJar(jarPathS3)
+                        .withMainClass("hadoop.examples.Job3A_PathVectors")
+                        .withArgs(Arrays.asList(job2bOut, job3aOut)));
+
+        StepConfig step3b = new StepConfig()
+                .withName("Job3B - ComputeSimilarity")
+                .withActionOnFailure(ActionOnFailure.TERMINATE_JOB_FLOW)
+                .withHadoopJarStep(new HadoopJarStepConfig()
+                        .withJar(jarPathS3)
+                        .withMainClass("hadoop.examples.Job3B_ComputeSimilarity")
+                        .withArgs(Arrays.asList(job3aOut, job3aOut, job3bOut)));
+
         JobFlowInstancesConfig instances = new JobFlowInstancesConfig()
                 .withMasterInstanceType(masterType)
                 .withSlaveInstanceType(coreType)
@@ -156,7 +174,7 @@ public class EmrMenuLauncher {
                 .withReleaseLabel(releaseLabel)
                 .withInstances(instances)
                 .withApplications(new Application().withName("Hadoop"))
-                .withSteps(step1, step2a, step2b)
+                .withSteps(step1, step2a, step2b, step3a, step3b)
                 .withLogUri(logsOut)
                 .withServiceRole("EMR_DefaultRole")
                 .withJobFlowRole("EMR_EC2_DefaultRole");
@@ -170,6 +188,8 @@ public class EmrMenuLauncher {
         System.out.println("Job1:   " + job1Out);
         System.out.println("Job2A:  " + job2aOut);
         System.out.println("Job2B:  " + job2bOut);
+        System.out.println("Job3A:  " + job3aOut);
+        System.out.println("Job3B:  " + job3bOut);
     }
 
     private static String prompt(Scanner sc, String label, String def) {

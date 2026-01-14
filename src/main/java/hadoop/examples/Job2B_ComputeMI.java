@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-
+import org.apache.hadoop.mapreduce.lib.output.LazyOutputFormat;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileStatus;
@@ -41,7 +41,7 @@ public class Job2B_ComputeMI {
                 throw new IOException("Job2A output path not set in configuration");
             }
             Path job2APath = new Path(job2APathStr);
-            FileSystem fs = FileSystem.get(conf);
+            FileSystem fs = FileSystem.get(job2APath.toUri(), conf);
             for (FileStatus status : fs.listStatus(job2APath)) {
                 if (!status.isFile()) continue;
                 String fileName = status.getPath().getName();
@@ -151,10 +151,18 @@ public static void main(String[] args) throws Exception {
     job.setOutputValueClass(Text.class);
 
     job.setInputFormatClass(TextInputFormat.class);
-    job.setOutputFormatClass(TextOutputFormat.class);
+    LazyOutputFormat.setOutputFormatClass(job, TextOutputFormat.class);
 
+    // Input = Job1 output
     FileInputFormat.addInputPath(job, new Path(job1Out));
-    FileOutputFormat.setOutputPath(job, new Path(job2bOut));
+
+    // Output (delete if exists to avoid FileAlreadyExistsException)
+    Path outPath = new Path(job2bOut);
+    FileSystem outFs = FileSystem.get(outPath.toUri(), conf);
+    if (outFs.exists(outPath)) {
+        outFs.delete(outPath, true);
+    }
+    FileOutputFormat.setOutputPath(job, outPath);
 
     System.exit(job.waitForCompletion(true) ? 0 : 1);
 }
