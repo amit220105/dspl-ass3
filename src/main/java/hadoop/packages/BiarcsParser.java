@@ -37,7 +37,7 @@ public static Record parseLine(String line) {
     line = line.trim();
     if (line.isEmpty()) return null;
     // head_word \t syntactic-ngram \t total_count \t ...
-    String[] parts = line.split("\t");
+    String[] parts = line.split("\t", 4);
     if (parts.length < 3) {
         throw new IllegalArgumentException("Expected at least 3 tab-separated fields: " + line);
     }

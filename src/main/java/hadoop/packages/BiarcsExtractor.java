@@ -51,7 +51,7 @@ public class BiarcsExtractor {
                 Integer verbId = chooseVerbOnPath(byId, path);
                 if (verbId == null) continue;
 
-                String predicate = buildPredicateKey(byId, path, verbId);
+                String predicate = buildPredicateKeySimple(byId, path, verbId);
                 if (predicate == null) continue;
 
                 // X/Y assignment: subject-of-verb is X if detectable
@@ -127,6 +127,8 @@ public class BiarcsExtractor {
            x.equals("do") || x.equals("does") || x.equals("did");
 }
 
+
+
 private static String buildPredicateKey(BiarcsParser.Tok[] byId, List<Integer> path, int verbId) {
     if (path.size() < 2) return null;
     StringBuilder sb = new StringBuilder();
@@ -165,6 +167,26 @@ private static String buildPredicateKey(BiarcsParser.Tok[] byId, List<Integer> p
     sb.append(" Y");
     return sb.toString().replaceAll("\\s+", " ").trim();
 }
+
+private static String buildPredicateKeySimple(BiarcsParser.Tok[] byId, List<Integer> path, int verbId) {
+    String verb = stemLower(byId[verbId].word); // you already stem => "provide" -> "provid"
+    String prep = null;
+
+    // pick the first IN/TO token on the path (typical for "provide from", "control with")
+    for (int id : path) {
+        BiarcsParser.Tok t = byId[id];
+        if (t != null && ("IN".equals(t.pos) || "TO".equals(t.pos))) {
+            prep = t.word.toLowerCase(java.util.Locale.ROOT);
+            break;
+        }
+    }
+
+    if (prep != null) return ("X " + verb + " " + prep + " Y").trim();
+    return ("X " + verb + " Y").trim();
+}
+
+
+
 private static int roleScoreX(BiarcsParser.Tok n, BiarcsParser.Tok[] byId, int verbId) {
     // X = subject of verb
     if (n.head == verbId) {
