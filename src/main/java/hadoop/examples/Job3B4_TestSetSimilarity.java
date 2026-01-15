@@ -4,17 +4,13 @@ import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
-
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
-
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
-
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
@@ -127,7 +123,7 @@ public class Job3B4_TestSetSimilarity {
                 finalSim = Math.sqrt(sx * sy);
                 if (Double.isNaN(finalSim) || finalSim < 0.0) finalSim = 0.0;
             }
-
+            
             for (String[] r : testRecs) {
                 String a = r[0], b = r[1], label = r[2];
                 ctx.write(new Text(a), new Text(b + "\t" + finalSim + "\t" + label));
