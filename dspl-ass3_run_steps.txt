@@ -1,0 +1,20 @@
+DSPL Ass3 – build/upload/clean/run (Windows)
+
+1) Build jar (from project root)
+cd C:\Users\dvir\Desktop\BGU\DSPL\dspl-ass3
+mvn clean -DskipTests package
+
+2) Upload jar to S3
+aws s3 cp target\dspl-ass3-1.0-SNAPSHOT.jar s3://dspl-inputbucket/jars/ass3.jar
+
+3) (Optional) Clear previous outputs/logs in your bucket
+REM WARNING: this deletes ALL previous runs + logs under these prefixes
+aws s3 rm s3://dspl-inputbucket/ass3/runs/ --recursive
+aws s3 rm s3://dspl-inputbucket/emr-logs/ --recursive
+
+4) Run the EMR launcher locally
+java -cp target\dspl-ass3-1.0-SNAPSHOT.jar hadoop.examples.EmrMenuLauncher
+
+5) (After it prints a cluster id) Check cluster status (replace with your id)
+REM Example:
+REM aws emr describe-cluster --cluster-id j-XXXXXXXXXXXXX --query "Cluster.Status" --output json

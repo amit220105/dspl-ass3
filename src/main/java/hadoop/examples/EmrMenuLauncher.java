@@ -19,12 +19,15 @@ import com.amazonaws.services.elasticmapreduce.model.RunJobFlowResult;
 import com.amazonaws.services.elasticmapreduce.model.StepConfig;
 
 /**
- * Interactive EMR launcher for your DIRT pipeline:
- *   Job1TripleCounts -> Job2A_Marginals -> Job2B_ComputeMI -> Job3A_PathVectors -> Job3B_ComputeSimilarity
+ * Interactive EMR launcher for a 4-step DIRT pipeline:
+ *   1) Job1TripleCounts
+ *   2) Job2A_Marginals
+ *   3) Job3_ComputeMIAndSlotSums   (outputs: <out>/mi and <out>/sums)
+ *   4) Job4_TestSetSimilarityDirect (uses MI + sums + testset to output similarities)
  *
- * Requires:
- *   - AWS creds available (AWS CLI config / env vars / instance profile)
- *   - Your jar in S3 (default): s3://<bucket>/jars/ass3.jar
+ * Outputs:
+ *  - MI(p,slot,w) table (for future similarity queries)
+ *  - Test-set pair similarities
  */
 public class EmrMenuLauncher {
 
@@ -32,7 +35,6 @@ public class EmrMenuLauncher {
     private static final String DEFAULT_JAR_KEY = "jars/ass3.jar";
     private static final String DEFAULT_SMALL_INPUT = "s3://dsp-ass3-first10-biarcs/";
 
-    // Pick whatever your course expects. You can change at runtime in the menu.
     private static final String DEFAULT_EMR_RELEASE = "emr-6.15.0";
 
     private static final DateTimeFormatter RUN_ID_FMT =
@@ -64,6 +66,7 @@ public class EmrMenuLauncher {
             String keyName = prompt(sc, "EC2 KeyPair name (for SSH) [blank = none]", "");
             String subnetId = prompt(sc, "EC2 SubnetId [blank = default]", "");
             String testSetS3 = prompt(sc, "Test-set pairs S3 URI", "s3://" + bucket + "/ass3/testset.txt");
+
             String input;
             if ("1".equals(choice)) {
                 input = DEFAULT_SMALL_INPUT;
@@ -97,7 +100,7 @@ public class EmrMenuLauncher {
             int coreCount,
             String ec2KeyName,
             String subnetId,
-            String  testSetS3
+            String testSetS3
     ) {
         AmazonElasticMapReduce emr = AmazonElasticMapReduceClientBuilder
                 .standard()
@@ -108,19 +111,12 @@ public class EmrMenuLauncher {
         String runId = RUN_ID_FMT.format(Instant.now());
         String baseOut = "s3://" + bucket + "/ass3/runs/" + runId;
 
+        // 4-step outputs
         String job1Out  = baseOut + "/job1_triple_counts";
         String job2aOut = baseOut + "/job2a_marginals";
-        String job2bOut = baseOut + "/job2b_mi";
+        String job3Out  = baseOut + "/job3_mi_and_sums";          // contains /mi and /sums
+        String job4Out  = baseOut + "/job4_testset_similarity";
 
-        String job2b1Out = baseOut + "/job2b1_join_ps";
-
-        String job3aOut = baseOut + "/job3a_path_vectors";
-        String job3b0Out = baseOut + "/job3b0_slot_sums";
-        String job3b1Out = baseOut + "/job3b1_pair_contrib";
-        String job3b2Out = baseOut + "/job3b2_pair_numerators";
-        String job3b3Out = baseOut + "/job3b3_slot_sims";
-        String job3b4Out = baseOut + "/job3b4_testset_similarity";
-        
         String logsOut  = "s3://" + bucket + "/emr-logs/" + runId + "/";
 
         StepConfig step1 = new StepConfig()
@@ -139,92 +135,32 @@ public class EmrMenuLauncher {
                         .withMainClass("hadoop.examples.Job2A_Marginals")
                         .withArgs(Arrays.asList(job1Out, job2aOut)));
 
-        // StepConfig step2b = new StepConfig()
-        //         .withName("Job2B - ComputeMI")
-        //         .withActionOnFailure(ActionOnFailure.TERMINATE_JOB_FLOW)
-        //         .withHadoopJarStep(new HadoopJarStepConfig()
-        //                 .withJar(jarPathS3)
-        //                 .withMainClass("hadoop.examples.Job2B_ComputeMI")
-        //                 .withArgs(Arrays.asList(job1Out, job2aOut, job2bOut)));
-
-        StepConfig step2b1 = new StepConfig()
-            .withName("Job2B1 - JoinPS")
-            .withActionOnFailure(ActionOnFailure.TERMINATE_JOB_FLOW)
-            .withHadoopJarStep(new HadoopJarStepConfig()
-                .withJar(jarPathS3)
-                .withMainClass("hadoop.examples.Job2B1_JoinPS")
-                .withArgs(Arrays.asList(job1Out, job2aOut, job2b1Out)));
-
-        StepConfig step2b2 = new StepConfig()
-            .withName("Job2B2 - JoinSW + ComputeMI")
-            .withActionOnFailure(ActionOnFailure.TERMINATE_JOB_FLOW)
-            .withHadoopJarStep(new HadoopJarStepConfig()
-                .withJar(jarPathS3)
-                .withMainClass("hadoop.examples.Job2B2_JoinSWComputeMI")
-                .withArgs(Arrays.asList(job2b1Out, job2aOut, job2bOut)));
-
-        StepConfig step3a = new StepConfig()
-                .withName("Job3A - PathVectors")
+        StepConfig step3 = new StepConfig()
+                .withName("Job3 - ComputeMI + SlotSums")
                 .withActionOnFailure(ActionOnFailure.TERMINATE_JOB_FLOW)
                 .withHadoopJarStep(new HadoopJarStepConfig()
                         .withJar(jarPathS3)
-                        .withMainClass("hadoop.examples.Job3A_PathVectors")
-                        .withArgs(Arrays.asList(job2bOut, job3aOut)));
+                        .withMainClass("hadoop.examples.Job3_ComputeMIAndSlotSums")
+                        .withArgs(Arrays.asList(job1Out, job2aOut, job3Out)));
 
-        // StepConfig step3b = new StepConfig()
-        //         .withName("Job3B - ComputeSimilarity")
-        //         .withActionOnFailure(ActionOnFailure.TERMINATE_JOB_FLOW)
-        //         .withHadoopJarStep(new HadoopJarStepConfig()
-        //                 .withJar(jarPathS3)
-        //                 .withMainClass("hadoop.examples.Job3B_ComputeSimilarity")
-        //                 .withArgs(Arrays.asList(job3aOut, job3aOut, job3bOut)));
-
-                StepConfig step3b0 = new StepConfig()
-            .withName("Job3B0 - SlotSums")
-            .withActionOnFailure(ActionOnFailure.TERMINATE_JOB_FLOW)
-            .withHadoopJarStep(new HadoopJarStepConfig()
-                .withJar(jarPathS3)
-                .withMainClass("hadoop.examples.Job3B0_SlotSums")
-                .withArgs(Arrays.asList(job3aOut, job3b0Out)));
-
-        StepConfig step3b1 = new StepConfig()
-            .withName("Job3B1 - FeaturePairContrib")
-            .withActionOnFailure(ActionOnFailure.TERMINATE_JOB_FLOW)
-            .withHadoopJarStep(new HadoopJarStepConfig()
-                .withJar(jarPathS3)
-                .withMainClass("hadoop.examples.Job3B1_FeaturePairContrib")
-                .withArgs(Arrays.asList(job3aOut, job3b1Out)));
-
-        StepConfig step3b2 = new StepConfig()
-            .withName("Job3B2 - AggregatePairContrib")
-            .withActionOnFailure(ActionOnFailure.TERMINATE_JOB_FLOW)
-            .withHadoopJarStep(new HadoopJarStepConfig()
-                .withJar(jarPathS3)
-                .withMainClass("hadoop.examples.Job3B2_AggregatePairContrib")
-                .withArgs(Arrays.asList(job3b1Out, job3b2Out)));
-
-        StepConfig step3b3 = new StepConfig()
-            .withName("Job3B3 - FinalSlotSims")
-            .withActionOnFailure(ActionOnFailure.TERMINATE_JOB_FLOW)
-            .withHadoopJarStep(new HadoopJarStepConfig()
-                .withJar(jarPathS3)
-                .withMainClass("hadoop.examples.Job3B3_FinalSimilarity")
-                .withArgs(Arrays.asList(job3b2Out, job3b0Out, job3b3Out)));
-        StepConfig step3b4 = new StepConfig()
-            .withName("Job3B4 - TestSetSimilarity")
-            .withActionOnFailure(ActionOnFailure.TERMINATE_JOB_FLOW)
-            .withHadoopJarStep(new HadoopJarStepConfig()
-                .withJar(jarPathS3)
-                .withMainClass("hadoop.examples.Job3B4_TestSetSimilarity")
-                .withArgs(Arrays.asList(job3b3Out, testSetS3, job3b4Out)));
+        StepConfig step4 = new StepConfig()
+                .withName("Job4 - TestSetSimilarity (Direct)")
+                .withActionOnFailure(ActionOnFailure.TERMINATE_JOB_FLOW)
+                .withHadoopJarStep(new HadoopJarStepConfig()
+                        .withJar(jarPathS3)
+                        .withMainClass("hadoop.examples.Job4_TestSetSimilarityDirect")
+                        .withArgs(Arrays.asList(
+                                job3Out + "/mi",
+                                job3Out + "/sums",
+                                testSetS3,
+                                job4Out
+                        )));
 
         JobFlowInstancesConfig instances = new JobFlowInstancesConfig()
                 .withMasterInstanceType(masterType)
                 .withSlaveInstanceType(coreType)
                 .withInstanceCount(1 + coreCount)
-                .withKeepJobFlowAliveWhenNoSteps(false)
-                // placement is optional; zone must be like "us-east-1a"
-                ;
+                .withKeepJobFlowAliveWhenNoSteps(false);
 
         if (ec2KeyName != null && !ec2KeyName.trim().isEmpty()) {
             instances = instances.withEc2KeyName(ec2KeyName.trim());
@@ -238,7 +174,7 @@ public class EmrMenuLauncher {
                 .withReleaseLabel(releaseLabel)
                 .withInstances(instances)
                 .withApplications(new Application().withName("Hadoop"))
-                .withSteps(step1, step2a, step2b1, step2b2, step3a, step3b0, step3b1, step3b2, step3b3, step3b4)
+                .withSteps(step1, step2a, step3, step4)
                 .withLogUri(logsOut)
                 .withServiceRole("EMR_DefaultRole")
                 .withJobFlowRole("EMR_EC2_DefaultRole");
@@ -249,14 +185,14 @@ public class EmrMenuLauncher {
         System.out.println("Input:  " + inputS3);
         System.out.println("Jar:    " + jarPathS3);
         System.out.println("Logs:   " + logsOut);
-        System.out.println("Job1:   " + job1Out);
-        System.out.println("Job2A:  " + job2aOut);
-        System.out.println("Job2B1: " + job2b1Out);
-        System.out.println("Job2B2: " + job2bOut);
-        System.out.println("Job3A:  " + job3aOut);
-        System.out.println("MI (Job2B2): " + job2bOut);
-        System.out.println("TestSet Similarities (Job3B4): " + job3b4Out);
-        // System.out.println("Job3B:  " + job3bOut);
+
+        System.out.println("Job1 (TripleCounts): " + job1Out);
+        System.out.println("Job2A (Marginals):   " + job2aOut);
+
+        System.out.println("MI table (Job3):     " + job3Out + "/mi");
+        System.out.println("Slot sums (Job3):    " + job3Out + "/sums");
+
+        System.out.println("TestSet Similarities (Job4): " + job4Out);
     }
 
     private static String prompt(Scanner sc, String label, String def) {
