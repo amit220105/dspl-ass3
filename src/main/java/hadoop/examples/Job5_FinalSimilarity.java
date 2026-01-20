@@ -173,8 +173,15 @@ public class Job5_FinalSimilarity {
             String label = TestPairsCache.labelFor(p1, p2);
 
             // Output: p1 \t p2   label \t simX \t simY \t S
+            // context.write(new Text(p1 + "\t" + p2),
+            //               new Text(label + "\t" + simX + "\t" + simY + "\t" + S));
+            // Output finale score
+            // context.write(new Text(p1 + "\t" + p2),
+            //   new Text(Double.toString(S)));
+
+            //pos/neg + value
             context.write(new Text(p1 + "\t" + p2),
-                          new Text(label + "\t" + simX + "\t" + simY + "\t" + S));
+              new Text(label + "\t" + S));
         }
     }
 
