@@ -36,7 +36,7 @@ public class Job1TripleCounts {
             if (line.isEmpty()) return;
             BiarcsParser.Record record;
             try {
-                record = extractor.parseLine(line);
+                record = BiarcsParser.parseLine(line);
                 if (record == null) return; // skip invalid lines
             } catch (Exception e) {
                 return;

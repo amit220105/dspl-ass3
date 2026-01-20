@@ -1,0 +1,81 @@
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
+import java.util.*;
+
+public class TestSetParser {
+
+    public record PredPair(String leftRaw, String rightRaw, int label) {}
+
+    public static List<PredPair> loadPairs(Path file, int labelFromFile) throws IOException {
+        List<PredPair> out = new ArrayList<>();
+        try (BufferedReader br = Files.newBufferedReader(file, StandardCharsets.UTF_8)) {
+            String line;
+            int lineNo = 0;
+            while ((line = br.readLine()) != null) {
+                lineNo++;
+                line = stripUtf8Bom(line).trim();
+                if (line.isEmpty() || line.startsWith("#")) continue;
+
+                String[] cols = line.split("\t", -1);
+                if (cols.length < 2) {
+                    throw new IllegalArgumentException(
+                        file + ":" + lineNo + " expected 2 TSV columns but got: " + Arrays.toString(cols)
+                    );
+                }
+
+                String left = cols[0].trim();
+                String right = cols[1].trim();
+                if (left.isEmpty() || right.isEmpty()) {
+                    throw new IllegalArgumentException(
+                        file + ":" + lineNo + " empty left/right template"
+                    );
+                }
+
+                out.add(new PredPair(left, right, labelFromFile));
+            }
+        }
+        return out;
+    }
+
+    private static String stripUtf8Bom(String s) {
+        if (s != null && !s.isEmpty() && s.charAt(0) == '\uFEFF') return s.substring(1);
+        return s;
+    }
+
+    public static void main(String[] args) throws Exception {
+        if (args.length != 2) {
+            System.err.println("Usage: java TestSetParser <positive-preds.txt> <negative-preds.txt>");
+            System.exit(1);
+        }
+
+        Path pos = Paths.get(args[0]);
+        Path neg = Paths.get(args[1]);
+
+        List<PredPair> posPairs = loadPairs(pos, 1);
+        List<PredPair> negPairs = loadPairs(neg, 0);
+
+        List<PredPair> all = new ArrayList<>(posPairs.size() + negPairs.size());
+        all.addAll(posPairs);
+        all.addAll(negPairs);
+
+        System.out.println("Loaded:");
+        System.out.println("  positive pairs: " + posPairs.size());
+        System.out.println("  negative pairs: " + negPairs.size());
+        System.out.println("  total pairs:    " + all.size());
+
+        // Collect unique templates 
+        Set<String> needed = new HashSet<>();
+        for (PredPair p : all) {
+            needed.add(p.leftRaw);
+            needed.add(p.rightRaw);
+        }
+        System.out.println("Unique templates (raw): " + needed.size());
+
+        // Print a few examples for sanity
+        for (int i = 0; i < Math.min(5, all.size()); i++) {
+            PredPair pp = all.get(i);
+            System.out.println(pp.label + "\t" + pp.leftRaw + "\t" + pp.rightRaw);
+        }
+    }
+}
