@@ -1,8 +1,14 @@
 package hadoop.examples;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URI;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -22,44 +28,59 @@ public class Job5_FinalSimilarity {
     private static final Map<String, Double> denom = new HashMap<>();
 
     private static void loadDenomsFromCache(URI[] cacheFiles) throws IOException {
-        if (!denom.isEmpty()) return;
+    if (!denom.isEmpty()) return;
 
-        if (cacheFiles == null || cacheFiles.length == 0) {
-            throw new IOException("No cache files for denominators");
+    if (cacheFiles == null || cacheFiles.length == 0) {
+        throw new IOException("No cache files for denominators");
+    }
+
+    boolean loadedAny = false;
+
+    for (URI uri : cacheFiles) {
+        // Use fragment if provided, else fallback to basename
+        String localName = (uri.getFragment() != null && !uri.getFragment().isEmpty())
+                ? uri.getFragment()
+                : new org.apache.hadoop.fs.Path(uri.getPath()).getName();
+
+        String low = localName.toLowerCase(Locale.ROOT);
+
+        // skip test files
+        if (low.contains("positive") || low.contains("negative")) continue;
+
+        File f = new File(localName);
+        if (!f.exists() || !f.isFile()) {
+            // If this happens, you forgot to add "#..." fragments, or localization failed
+            throw new FileNotFoundException(
+                    "Denoms cache file not found locally. " +
+                    "Tried localName='" + localName + "' for cache URI='" + uri + "'");
         }
 
-        for (URI uri : cacheFiles) {
-            File f = new File(uri.getPath());
-            String name = f.getName();
-            // we may cache denoms + test files; skip test files
-            String low = name.toLowerCase(Locale.ROOT);
-            if (low.contains("positive") || low.contains("negative")) continue;
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                line = line.trim();
+                if (line.isEmpty()) continue;
 
-            try (BufferedReader br = new BufferedReader(new FileReader(f))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    line = line.trim();
-                    if (line.isEmpty()) continue;
+                // Job3 output: "p \t slot \t denom"
+                String[] parts = line.split("\t");
+                if (parts.length != 3) continue;
 
-                    // Job3 output: "p \t slot \t denom"
-                    String[] parts = line.split("\t");
-                    if (parts.length != 3) continue;
+                String p = parts[0];
+                String slot = parts[1];
+                double d;
+                try { d = Double.parseDouble(parts[2]); }
+                catch (NumberFormatException e) { continue; }
 
-                    String p = parts[0];
-                    String slot = parts[1];
-                    double d;
-                    try { d = Double.parseDouble(parts[2]); }
-                    catch (NumberFormatException e) { continue; }
-
-                    denom.put(p + "\t" + slot, d);
-                }
+                denom.put(p + "\t" + slot, d);
+                loadedAny = true;
             }
         }
-
-        if (denom.isEmpty()) {
-            throw new IOException("Loaded 0 denominators from cache");
-        }
     }
+
+    if (!loadedAny || denom.isEmpty()) {
+        throw new IOException("Loaded 0 denominators from cache");
+    }
+}
 
     // Mapper: pass through numer contributions
     public static class MapperClass extends Mapper<LongWritable, Text, Text, Text> {
@@ -170,9 +191,12 @@ public class Job5_FinalSimilarity {
         job.setJarByClass(Job5_FinalSimilarity.class);
 
         // cache: denoms + test sets
-        job.addCacheFile(new URI(args[1])); // Job3 denom part file
-        job.addCacheFile(new URI(args[2])); // positive
-        job.addCacheFile(new URI(args[3])); // negative
+        // job.addCacheFile(new URI(args[1])); // Job3 denom part file
+        // job.addCacheFile(new URI(args[2])); // positive
+        // job.addCacheFile(new URI(args[3])); // negative
+        job.addCacheFile(new URI(args[1] + "#denoms-part.txt"));
+        job.addCacheFile(new URI(args[2] + "#positive-preds.txt"));
+        job.addCacheFile(new URI(args[3] + "#negative-preds.txt"));
 
         job.setMapperClass(MapperClass.class);
         job.setReducerClass(ReducerClass.class);

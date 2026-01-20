@@ -2,7 +2,9 @@ package hadoop.examples;
 
 import java.io.IOException;
 import java.net.URI;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -117,8 +119,10 @@ public class Job4_TestNumerators {
         Job job = Job.getInstance(conf, "ASS3-Job4-TestNumerators");
         job.setJarByClass(Job4_TestNumerators.class);
 
-        job.addCacheFile(new URI(args[1])); // positive
-        job.addCacheFile(new URI(args[2])); // negative
+        // job.addCacheFile(new URI(args[1])); // positive
+        // job.addCacheFile(new URI(args[2])); // negative
+        job.addCacheFile(new URI(args[1] + "#positive-preds.txt"));
+        job.addCacheFile(new URI(args[2] + "#negative-preds.txt"));
 
         job.setMapperClass(MapperClass.class);
         job.setReducerClass(ReducerClass.class);
