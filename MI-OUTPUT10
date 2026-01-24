@@ -1,0 +1,1103 @@
+X accompani Y	X accompani Y	POS	0.9037512306719211
+X accompani Y	X accompani by Y	POS	0.43259182378697664
+X accompani Y	X accompani with Y	POS	0.354641798143902
+X accompani Y	X associ with Y	POS	0.28953867507421555
+X accompani Y	X caus Y	POS	0.11003762573487193
+X accompani Y	X caus by Y	POS	0.11699311692862911
+X accompani Y	X complic Y	POS	0.032033261002767925
+X accompani Y	X develop with Y	POS	0.0023711959290414406
+X accompani Y	X follow Y	POS	0.18465583111190548
+X accompani Y	X follow by Y	POS	0.09792364302947568
+X accompani Y	X mean Y	POS	0.04037465484482071
+X accompani Y	X occur in Y	POS	0.04926300669619387
+X accompani Y	X occur with Y	POS	0.02196610857520113
+X accompani Y	X produc Y	POS	0.0953242838484332
+X accompani Y	X result in Y	POS	0.057727071529279604
+X accompani Y	X suggest Y	POS	0.054464617505893355
+X accompani by Y	X accompani by Y	POS	0.8779081121708852
+X accompani by Y	X accompani with Y	POS	0.392280684891014
+X accompani by Y	X associ with Y	POS	0.4603283027322994
+X accompani by Y	X attend with Y	POS	0.3652467941836976
+X accompani by Y	X caus Y	POS	0.17164768095098357
+X accompani by Y	X caus by Y	POS	0.15631182148832587
+X accompani by Y	X come with Y	POS	0.027511727576606325
+X accompani by Y	X complic Y	POS	0.03945469496420552
+X accompani by Y	X develop with Y	POS	0.004449919632403602
+X accompani by Y	X follow Y	POS	0.22904925540488477
+X accompani by Y	X follow by Y	POS	0.14803072106054385
+X accompani by Y	X indic Y	POS	0.05782192362059174
+X accompani by Y	X mean Y	POS	0.046367337960692756
+X accompani by Y	X occur with Y	POS	0.03145776898298077
+X accompani by Y	X present with Y	POS	0.0333528028809605
+X accompani by Y	X produc Y	POS	0.14099337794667302
+X accompani by Y	X result in Y	POS	0.09145780413632718
+X accompani by Y	X see in Y	POS	0.017651710880043366
+X accompani by Y	X suggest Y	POS	0.057507137721200474
+X accompani with Y	X associ with Y	POS	0.1317642224226374
+X accompani with Y	X caus Y	POS	0.1154305242118418
+X achiev with Y	X afford Y	POS	0.1293943873663367
+X achiev with Y	X bring Y	POS	0.08709745528306703
+X achiev with Y	X give Y	POS	0.08229741777035367
+X achiev with Y	X indic for Y	POS	0.012981034653855774
+X achiev with Y	X obtain with Y	POS	0.061094622436212595
+X achiev with Y	X offer Y	POS	0.08337693176373173
+X achiev with Y	X prescrib for Y	POS	0.0
+X achiev with Y	X produc Y	POS	0.09971009289918432
+X achiev with Y	X provid Y	POS	0.09656874218886907
+X achiev with Y	X recommend for Y	POS	0.02850859703740813
+X achiev with Y	X requir for Y	POS	0.08895941252638606
+X achiev with Y	X us for Y	POS	0.07832961240758661
+X act as Y	X includ Y	POS	0.12525183909774842
+X administ before Y	X give before Y	POS	0.0
+X administ during Y	X us during Y	POS	0.19972506701367582
+X administ during Y	X us for Y	POS	0.08462020834213886
+X administ during Y	X us in Y	POS	0.06991162939986378
+X administ for Y	X give for Y	POS	0.056970144105392
+X administ for Y	X help Y	POS	0.03607763918965143
+X administ for Y	X need for Y	POS	0.08025794289564295
+X administ for Y	X order for Y	POS	0.0
+X administ for Y	X prescrib for Y	POS	0.04957440528888852
+X administ for Y	X recommend for Y	POS	0.05342515264171548
+X administ for Y	X reduc Y	POS	0.09077271623126491
+X administ for Y	X reliev Y	POS	0.07546939345794758
+X administ for Y	X reliev by Y	POS	0.011411935251495347
+X administ for Y	X requir Y	POS	0.08203557287589401
+X administ for Y	X requir for Y	POS	0.06996640362177779
+X administ for Y	X respond to Y	POS	0.022828094206263028
+X administ for Y	X us for Y	POS	0.1207705195877725
+X administ for Y	X us in Y	POS	0.1064129612242245
+X administ to Y	X give to Y	POS	0.04660722651128596
+X administ to Y	X us for Y	POS	0.08094662226144124
+X administ to Y	X us in Y	POS	0.08938080508533909
+X administ with Y	X combin with Y	POS	0.12046351810112003
+X affect Y	X affect by Y	POS	0.3232788544303434
+X affect Y	X affect in Y	POS	0.5538334283486084
+X affect Y	X affect with Y	POS	0.2266859627519928
+X affect Y	X attack Y	POS	0.11453422381909328
+X affect Y	X caus Y	POS	0.09212024619911348
+X affect Y	X confin to Y	POS	0.0396521111444485
+X affect Y	X develop Y	POS	0.0816511474124973
+X affect Y	X develop in Y	POS	0.03236860536259572
+X affect Y	X have Y	POS	0.06083379483459224
+X affect Y	X infect Y	POS	0.016925837277280743
+X affect Y	X involv Y	POS	0.1371802653597573
+X affect Y	X occur in Y	POS	0.07958851963063325
+X affect Y	X transmit to Y	POS	0.023397128614613575
+X affect by Y	X attack Y	POS	0.06505516158320554
+X affect by Y	X destroi Y	POS	0.07290955920057267
+X affect by Y	X elimin Y	POS	0.06190153827509098
+X affect by Y	X erad Y	POS	0.03218095054582091
+X affect by Y	X involv Y	POS	0.11142684451082352
+X affect by Y	X kill Y	POS	0.03667794652491674
+X affect by Y	X kill by Y	POS	0.011639241849351892
+X affect by Y	X prevent Y	POS	0.09826486444332568
+X affect by Y	X respond to Y	POS	0.01926716013596681
+X affect by Y	X treat with Y	POS	0.036483490048442285
+X affect in Y	X involv Y	POS	0.11024330603578286
+X affect with Y	X develop in Y	POS	0.029361147567480917
+X affect with Y	X occur in Y	POS	0.06174237917399135
+X afford Y	X bring Y	POS	0.08694970355180745
+X afford Y	X give Y	POS	0.152100285787926
+X afford Y	X indic for Y	POS	0.0022429744940669844
+X afford Y	X obtain with Y	POS	0.017910443073347836
+X afford Y	X offer Y	POS	0.15238846445034204
+X afford Y	X prescrib for Y	POS	0.006560003700253034
+X afford Y	X produc Y	POS	0.10052450992125184
+X afford Y	X provid Y	POS	0.11701292526213669
+X afford Y	X recommend for Y	POS	0.006533364274243967
+X afford Y	X us for Y	POS	0.03977239188431465
+X afford by Y	X give Y	POS	0.11096141255887029
+X afford by Y	X offer Y	POS	0.11103193707970654
+X afford by Y	X provid Y	POS	0.1017430414003509
+X afford by Y	X provid by Y	POS	0.09937307327835868
+X afford by Y	X us for Y	POS	0.07300795896935997
+X aggrav Y	X caus Y	POS	0.22082212203037402
+X aggrav Y	X caus by Y	POS	0.11901476224442091
+X aggrav Y	X produc Y	POS	0.11517319199682413
+X allevi Y	X control Y	POS	0.11400604883768159
+X allevi Y	X control by Y	POS	0.021197998863269594
+X allevi Y	X control with Y	POS	0.0
+X allevi Y	X decreas Y	POS	0.12647799889945607
+X allevi Y	X give for Y	POS	0.02527994383885917
+X allevi Y	X help Y	POS	0.05599416864488061
+X allevi Y	X manag with Y	POS	0.011933673901594524
+X allevi Y	X mask Y	POS	0.07869612899715034
+X allevi Y	X prescrib for Y	POS	0.02144148528455444
+X allevi Y	X reduc Y	POS	0.17147483166330443
+X allevi Y	X reliev Y	POS	0.26581888144045923
+X allevi Y	X reliev by Y	POS	0.020683719679782834
+X allevi Y	X reliev with Y	POS	0.0
+X allevi Y	X respond to Y	POS	0.06120208483505054
+X allevi Y	X treat by Y	POS	0.008194775082732322
+X allevi Y	X treat with Y	POS	0.009671083838119772
+X allevi Y	X us for Y	POS	0.04154201480959118
+X altern with Y	X altern with Y	POS	0.9429896734214814
+X altern with Y	X follow by Y	POS	0.07965192317398383
+X altern with Y	X give to Y	POS	0.06205922669203963
+X appear as Y	X character by Y	POS	0.025796925841457142
+X appear in Y	X find in Y	POS	0.026495499952468905
+X associ Y	X caus Y	POS	0.1344703759238474
+X associ with Y	X associ with Y	POS	0.7349712682834568
+X associ with Y	X attend with Y	POS	0.15753278316813238
+X associ with Y	X attribut to Y	POS	0.2671564617912161
+X associ with Y	X caus by Y	POS	0.15867514407423458
+X associ with Y	X come with Y	POS	0.010071141751008319
+X associ with Y	X complic with Y	POS	0.009784545598812828
+X associ with Y	X contribut to Y	POS	0.020295267047486732
+X associ with Y	X defin as Y	POS	0.010922107795449873
+X associ with Y	X develop Y	POS	0.054088254957695044
+X associ with Y	X develop from Y	POS	0.006121885422730248
+X associ with Y	X develop into Y	POS	0.011829068420621387
+X associ with Y	X develop with Y	POS	0.0027421092365748725
+X associ with Y	X distinguish from Y	NEG	0.020459592959263258
+X associ with Y	X find in Y	POS	0.013142368807493292
+X associ with Y	X follow Y	POS	0.23333126568457654
+X associ with Y	X follow by Y	POS	0.07877310948130951
+X associ with Y	X give Y	POS	0.04551030262605744
+X associ with Y	X give to Y	POS	0.034269805587857034
+X associ with Y	X herald by Y	POS	0.0
+X associ with Y	X impli Y	POS	0.027942455795136843
+X associ with Y	X increas Y	POS	0.06304526154876805
+X associ with Y	X indic Y	POS	0.04796635241810928
+X associ with Y	X involv Y	POS	0.09141504631721142
+X associ with Y	X manifest as Y	POS	0.006295206892434096
+X associ with Y	X manifest by Y	POS	0.020943750980900767
+X associ with Y	X mean Y	POS	0.02739051574243112
+X associ with Y	X occur Y	NEG	0.08898583219057025
+X associ with Y	X occur after Y	POS	0.017328360017560378
+X associ with Y	X occur during Y	POS	0.029198346902968884
+X associ with Y	X occur from Y	POS	0.0040399299337587485
+X associ with Y	X occur in Y	POS	0.06578091507966714
+X associ with Y	X occur with Y	POS	0.03181109811242664
+X associ with Y	X predispos to Y	POS	0.010904710403872182
+X associ with Y	X present as Y	POS	0.01368804113129361
+X associ with Y	X present with Y	POS	0.03162989398513994
+X associ with Y	X produc by Y	POS	0.10652544312758544
+X associ with Y	X progress to Y	POS	0.004689828806206802
+X associ with Y	X refer to Y	POS	0.023911764142676234
+X associ with Y	X relat to Y	POS	0.07378074859537617
+X associ with Y	X result from Y	POS	0.12343987342464587
+X associ with Y	X result in Y	POS	0.07293339232834589
+X associ with Y	X see in Y	POS	0.010521997880267628
+X associ with Y	X see with Y	POS	7.818224959371617E-4
+X associ with Y	X suggest Y	POS	0.03580829387900578
+X attack Y	X destroi Y	POS	0.09418383217545821
+X attack Y	X involv Y	POS	0.035557675826589134
+X attack Y	X occur in Y	POS	0.033735549215974915
+X attack with Y	X have Y	POS	0.05274096280564187
+X attack with Y	X suffer from Y	POS	0.03984255015676094
+X attend with Y	X caus Y	POS	0.1675474266395908
+X attribut to Y	X caus Y	POS	0.11923464588461745
+X attribut to Y	X caus by Y	POS	0.1100886614468185
+X attribut to Y	X follow Y	POS	0.15530830518724187
+X attribut to Y	X produc Y	POS	0.10032598989268923
+X attribut to Y	X relat to Y	POS	0.040941431179907777
+X attribut to Y	X result from Y	POS	0.08727594906757262
+X avoid in Y	X us in Y	NEG	0.09417364668964498
+X base on Y	X compos of Y	POS	0.02530131279235725
+X base on Y	X contain Y	POS	0.04672885858680155
+X base on Y	X make from Y	POS	0.013383014110419872
+X base on Y	X prepar from Y	POS	0.007303032917655075
+X begin as Y	X caus Y	POS	0.0
+X begin with Y	X caus by Y	POS	0.057358843928163976
+X begin with Y	X character by Y	POS	0.11939742846779826
+X begin with Y	X consist of Y	POS	0.09257932355237225
+X begin with Y	X indic Y	POS	0.12519655193844823
+X begin with Y	X present with Y	POS	0.08160259847213501
+X begin with Y	X suggest Y	POS	0.13040167956703916
+X break Y	X convert Y	POS	0.1535098357145658
+X break Y	X digest Y	POS	0.12173820644432
+X break Y	X hydrolyz Y	POS	0.13066499253233627
+X bring Y	X caus Y	POS	0.18577869787897022
+X bring Y	X give Y	POS	0.2136752025140603
+X bring Y	X obtain with Y	POS	0.07113741329917399
+X bring Y	X prescrib for Y	POS	0.06492355040989516
+X bring Y	X produc Y	POS	0.19462629067306586
+X bring Y	X provid Y	POS	0.18248352635572893
+X bring Y	X us for Y	POS	0.11853420410258095
+X carri Y	X carri by Y	POS	0.17368917688150423
+X carri Y	X contain Y	POS	0.22715850266993187
+X carri Y	X find in Y	POS	0.11331699410617693
+X carri Y	X have Y	POS	0.23852084152730169
+X carri Y	X infect with Y	POS	0.04961273723856385
+X carri Y	X occur in Y	POS	0.11444307941880066
+X carri Y	X spread Y	POS	0.1484996031390503
+X carri Y	X spread by Y	POS	0.02519638947900067
+X carri Y	X transmit Y	POS	0.15471905416519538
+X carri Y	X transmit by Y	POS	0.048108301952436525
+X carri by Y	X infect with Y	POS	0.07378731146854911
+X carri by Y	X spread by Y	POS	0.09932375807780411
+X carri by Y	X transmit Y	POS	0.10362123787540861
+X carri by Y	X transmit by Y	POS	0.17672755956082511
+X caus Y	X caus by Y	POS	0.45973968641288304
+X caus Y	X character by Y	POS	0.2573784359166359
+X caus Y	X complic Y	POS	0.21651947827850973
+X caus Y	X contribut to Y	POS	0.11788837203595764
+X caus Y	X develop Y	POS	0.10031522034232374
+X caus Y	X develop after Y	POS	0.06697002859657551
+X caus Y	X develop from Y	POS	0.022095346978148682
+X caus Y	X develop with Y	POS	0.02190102750197334
+X caus Y	X exacerb Y	POS	0.05806093220337555
+X caus Y	X follow Y	POS	0.23710400927467362
+X caus Y	X follow by Y	POS	0.27151258292405295
+X caus Y	X give Y	POS	0.16034434095408218
+X caus Y	X give to Y	POS	0.16306132281538196
+X caus Y	X impli Y	POS	0.11743924926791216
+X caus Y	X increas Y	POS	0.21464969791749547
+X caus Y	X induc Y	POS	0.30207108651112397
+X caus Y	X induc by Y	POS	0.23470444463473772
+X caus Y	X involv Y	POS	0.22673338227689774
+X caus Y	X lead to Y	POS	0.33870095197732697
+X caus Y	X manifest as Y	POS	0.04502546559218665
+X caus Y	X manifest by Y	POS	0.1181209896825716
+X caus Y	X mean Y	POS	0.13290184230244803
+X caus Y	X occur after Y	POS	0.09131078542936245
+X caus Y	X occur during Y	POS	0.1025959411991647
+X caus Y	X occur from Y	POS	0.03402125723962545
+X caus Y	X occur in Y	POS	0.18994026104806863
+X caus Y	X occur with Y	POS	0.10725933935287946
+X caus Y	X preced by Y	POS	0.08318693860359527
+X caus Y	X precipit Y	POS	0.10552916025268336
+X caus Y	X precipit by Y	POS	0.06738797983534192
+X caus Y	X predispos to Y	POS	0.07556082897476327
+X caus Y	X present with Y	POS	0.09424897465654511
+X caus Y	X produc Y	POS	0.35915252724822877
+X caus Y	X produc by Y	POS	0.31853319172232614
+X caus Y	X relat to Y	POS	0.17765811284267788
+X caus Y	X result from Y	POS	0.38840116838814825
+X caus Y	X result in Y	POS	0.39990841380996767
+X caus Y	X see in Y	POS	0.06521142044828357
+X caus Y	X start with Y	POS	0.02598168291608701
+X caus Y	X suggest Y	POS	0.15073114481315136
+X caus Y	X trigger Y	POS	0.13036074167055564
+X caus by Y	X character by Y	POS	0.3105730813243604
+X caus by Y	X complic Y	POS	0.1938068960321241
+X caus by Y	X complic by Y	POS	0.1371796356558227
+X caus by Y	X contribut to Y	POS	0.15403480781106743
+X caus by Y	X defin as Y	POS	0.06554824131009622
+X caus by Y	X develop Y	POS	0.1121129325981248
+X caus by Y	X develop after Y	POS	0.0466344072848121
+X caus by Y	X develop from Y	POS	0.048136469861922625
+X caus by Y	X develop into Y	POS	0.07232768066805495
+X caus by Y	X follow Y	POS	0.2738576466989266
+X caus by Y	X follow by Y	POS	0.29109432339152513
+X caus by Y	X give Y	POS	0.15977958527901845
+X caus by Y	X indic Y	POS	0.18792698191109178
+X caus by Y	X induc Y	POS	0.18939424508309727
+X caus by Y	X involv Y	POS	0.3562970798962175
+X caus by Y	X lead to Y	POS	0.3239212828282875
+X caus by Y	X manifest as Y	POS	0.030887998837551823
+X caus by Y	X manifest by Y	POS	0.11870608090409607
+X caus by Y	X mean Y	POS	0.11637968435498101
+X caus by Y	X occur after Y	POS	0.08454650845046242
+X caus by Y	X occur from Y	POS	0.03628547895726678
+X caus by Y	X occur in Y	POS	0.21895587810311812
+X caus by Y	X occur with Y	POS	0.12464080495812357
+X caus by Y	X predispos to Y	POS	0.0698098036235409
+X caus by Y	X present with Y	POS	0.08648991976921101
+X caus by Y	X produc Y	POS	0.24760854158360462
+X caus by Y	X produc by Y	POS	0.5342110343682277
+X caus by Y	X progress to Y	POS	0.01668523302860374
+X caus by Y	X refer to Y	POS	0.14833181865985667
+X caus by Y	X relat to Y	POS	0.25262425680737716
+X caus by Y	X result from Y	POS	0.6114715434731988
+X caus by Y	X result in Y	POS	0.34378075435394484
+X caus by Y	X see in Y	POS	0.07432596308973645
+X caus by Y	X suggest Y	POS	0.1656886095957554
+X character by Y	X consist of Y	POS	0.13065432504580046
+X character by Y	X contribut to Y	POS	0.17728910635869025
+X character by Y	X distinguish from Y	NEG	0.14425751326290046
+X character by Y	X find in Y	POS	0.10129636335099722
+X character by Y	X follow Y	POS	0.10852640891316927
+X character by Y	X give to Y	POS	0.12367493427165052
+X character by Y	X have Y	POS	0.21405821337598524
+X character by Y	X includ Y	NEG	0.0785468782898402
+X character by Y	X indic Y	POS	0.18710472524030167
+X character by Y	X involv Y	POS	0.22407785572632388
+X character by Y	X lead to Y	POS	0.26841357701557905
+X character by Y	X manifest by Y	POS	0.16680661858074353
+X character by Y	X mean Y	POS	0.11238307345046089
+X character by Y	X occur during Y	POS	0.16705304186551634
+X character by Y	X occur in Y	POS	0.22515430405689021
+X character by Y	X preced Y	POS	0.17929364580313797
+X character by Y	X present as Y	POS	0.08804487147909956
+X character by Y	X present with Y	POS	0.1423101005621378
+X character by Y	X relat to Y	POS	0.191744623312589
+X character by Y	X result from Y	POS	0.3421850998172956
+X character by Y	X result in Y	POS	0.33964994201066484
+X character by Y	X see in Y	POS	0.08042409309589656
+X character by Y	X start with Y	POS	0.03420188385726315
+X character by Y	X suggest Y	POS	0.10681714617129434
+X combin with Y	X combin with Y	POS	0.9563976120118324
+X combin with Y	X contain Y	POS	0.24515211985022667
+X combin with Y	X encount Y	POS	0.06607549749012506
+X combin with Y	X includ Y	POS	0.11223061735944494
+X combin with Y	X join with Y	POS	0.12364844920303224
+X combin with Y	X meet Y	POS	0.10068726105062929
+X combin with Y	X unit with Y	POS	0.3259529130181952
+X combin with Y	X us as Y	POS	0.14497318945085538
+X combin with Y	X us with Y	POS	0.18660928939025698
+X come from Y	X produc Y	POS	0.1057762795998389
+X complic Y	X complic by Y	POS	0.2803542924226514
+X complic Y	X complic with Y	POS	0.09968436037175997
+X complic Y	X follow Y	POS	0.12319925458337809
+X complic Y	X follow by Y	POS	0.09835910115074856
+X complic Y	X lead to Y	POS	0.113359611952106
+X complic Y	X occur with Y	POS	0.1401120081902741
+X complic Y	X preced Y	POS	0.10419509813994546
+X complic Y	X preced by Y	POS	0.03490904553037542
+X complic Y	X result from Y	POS	0.20731595428971053
+X complic by Y	X develop into Y	POS	0.08366866057627698
+X complic by Y	X follow Y	POS	0.06804754114330598
+X complic by Y	X follow by Y	POS	0.0704058929536287
+X complic by Y	X lead to Y	POS	0.0837506463458871
+X complic by Y	X progress to Y	POS	0.0
+X complic by Y	X result from Y	POS	0.17124980880094523
+X compos of Y	X consist of Y	POS	0.6935127133955418
+X compos of Y	X contain Y	POS	0.3108613129505198
+X compos of Y	X make from Y	POS	0.04299636083229241
+X compos of Y	X prepar from Y	POS	0.126661196506214
+X compos of Y	X us as Y	POS	0.14078255869793876
+X confin to Y	X involv Y	POS	0.2134402299984985
+X confound with Y	X confound with Y	POS	0.8919120899885471
+X confound with Y	X confus with Y	POS	0.07269510719623712
+X confound with Y	X differ from Y	NEG	0.03416189259405563
+X confound with Y	X distinguish from Y	NEG	0.03801104865785421
+X confound with Y	X mistak for Y	POS	0.08167331066529955
+X confound with Y	X resembl Y	NEG	0.02631699818191256
+X confound with Y	X simul Y	NEG	0.07924451457997841
+X confus with Y	X differ from Y	POS	0.050036229997573206
+X confus with Y	X differenti from Y	POS	0.05878802334653042
+X confus with Y	X distinguish from Y	POS	0.02480468429335896
+X confus with Y	X includ Y	NEG	0.016848941344167413
+X confus with Y	X mistak for Y	POS	0.07807247662503626
+X confus with Y	X resembl Y	NEG	0.05608856062521249
+X consist of Y	X contain Y	POS	0.38515522830891846
+X consist of Y	X have Y	POS	0.32045984889871004
+X consist of Y	X make from Y	POS	0.05743033273750325
+X consist of Y	X prepar from Y	POS	0.1012029542152651
+X consist of Y	X suggest Y	POS	0.08544110274406438
+X consist of Y	X us as Y	POS	0.1757935135453766
+X constrict Y	X dilat Y	NEG	0.2943018352805743
+X contain Y	X find in Y	POS	0.08629075502890748
+X contain Y	X have Y	POS	0.2830105599382609
+X contain Y	X includ Y	POS	0.18886756606920083
+X contain Y	X make from Y	POS	0.03809716199397731
+X contain Y	X obtain from Y	POS	0.22276455650493232
+X contain Y	X occur in Y	POS	0.1719446396788594
+X contain Y	X prepar from Y	POS	0.11715527051399023
+X contain Y	X provid Y	POS	0.13667038153541325
+X contain Y	X receiv Y	POS	0.17493418957622608
+X contain Y	X us as Y	POS	0.22880237189373015
+X contain Y	X us in Y	POS	0.22986419136138056
+X contract Y	X develop Y	POS	0.11213551158617449
+X contract Y	X die from Y	NEG	0.06967262143675604
+X contract Y	X die of Y	NEG	0.07642958332190429
+X contract Y	X get Y	POS	0.11759422483132556
+X contract Y	X have Y	POS	0.08898128180639875
+X contract Y	X kill Y	NEG	0.047883691466073644
+X contribut to Y	X lead to Y	POS	0.25562196867487647
+X contribut to Y	X produc Y	POS	0.13310862590610298
+X contribut to Y	X relat to Y	POS	0.27291570147475736
+X contribut to Y	X result from Y	POS	0.25316379324252963
+X contribut to Y	X result in Y	POS	0.25738065122093656
+X control Y	X control by Y	POS	0.2243222687785166
+X control Y	X control with Y	POS	0.051232494711597236
+X control Y	X cure Y	POS	0.1413431141867919
+X control Y	X cure with Y	POS	0.0
+X control Y	X decreas Y	POS	0.24449612874941262
+X control Y	X help Y	POS	0.13010447042532342
+X control Y	X indic for Y	POS	0.07269859349954642
+X control Y	X manag with Y	POS	0.039525571483958605
+X control Y	X mask Y	POS	0.14646096313783122
+X control Y	X need for Y	POS	0.2266793691540199
+X control Y	X order for Y	POS	0.03505791555432608
+X control Y	X prescrib for Y	POS	0.10092187147123527
+X control Y	X prevent Y	POS	0.28673604729135055
+X control Y	X provid from Y	POS	0.07205340107960564
+X control Y	X reduc Y	POS	0.3763598448727613
+X control Y	X reliev Y	POS	0.20126269291425167
+X control Y	X reliev by Y	POS	0.08897823509099798
+X control Y	X reliev with Y	POS	0.03051731434614681
+X control Y	X requir Y	POS	0.09675086816319156
+X control Y	X treat Y	POS	0.21674899860980362
+X control Y	X treat by Y	POS	0.040258568391610954
+X control Y	X treat with Y	POS	0.05153801600836743
+X control by Y	X control with Y	POS	0.06295967119151419
+X control by Y	X cure Y	POS	0.017995850329508407
+X control by Y	X cure with Y	POS	0.018570939314024246
+X control by Y	X erad Y	POS	0.038971702877901665
+X control by Y	X help Y	POS	0.12164323292955129
+X control by Y	X indic for Y	POS	0.030340344664392
+X control by Y	X manag with Y	POS	0.0
+X control by Y	X mask Y	POS	0.04594128064214605
+X control by Y	X need for Y	POS	0.15011213292685532
+X control by Y	X order for Y	POS	0.05735962519793538
+X control by Y	X overcom by Y	POS	0.07060742825623333
+X control by Y	X prescrib for Y	POS	0.06537326344834397
+X control by Y	X prevent Y	POS	0.11777242513505669
+X control by Y	X prevent by Y	POS	0.1362076677692983
+X control by Y	X provid from Y	POS	0.031253102088342775
+X control by Y	X reduc Y	POS	0.09693379603313347
+X control by Y	X reliev Y	POS	0.07711155431453508
+X control by Y	X reliev by Y	POS	0.12547234851299754
+X control by Y	X reliev with Y	POS	0.04314917234717423
+X control by Y	X requir Y	POS	0.10088817234272585
+X control by Y	X treat by Y	POS	0.12421212371066362
+X control by Y	X treat with Y	POS	0.09441095751951915
+X control with Y	X cure Y	POS	0.04945912021408974
+X control with Y	X decreas Y	POS	0.03890295269438664
+X control with Y	X elimin Y	POS	0.04505953294802977
+X control with Y	X erad Y	POS	0.0
+X control with Y	X help Y	POS	0.026522638396721976
+X control with Y	X indic for Y	POS	0.0
+X control with Y	X kill Y	POS	0.012493428443533823
+X control with Y	X manag with Y	POS	0.0
+X control with Y	X mask Y	POS	0.04743821043032172
+X control with Y	X need for Y	POS	0.041837270633086454
+X control with Y	X order for Y	POS	0.04892566093806586
+X control with Y	X prescrib for Y	POS	0.0
+X control with Y	X prevent Y	POS	0.017734026826016745
+X control with Y	X provid from Y	POS	0.0
+X control with Y	X reduc Y	POS	0.02056171444695237
+X control with Y	X reliev Y	POS	0.024233519413915786
+X control with Y	X reliev by Y	POS	0.05923161625532286
+X control with Y	X reliev with Y	POS	0.20379557554716646
+X control with Y	X requir Y	POS	0.04560810532338876
+X control with Y	X take for Y	POS	0.04725238194652072
+X control with Y	X treat Y	POS	0.011931611596530601
+X control with Y	X treat by Y	POS	0.0674856777314152
+X control with Y	X treat with Y	POS	0.05456287371086558
+X control with Y	X us against Y	POS	0.0
+X control with Y	X wipe Y	POS	0.0
+X convert Y	X convert by Y	POS	0.10902295342772432
+X convert Y	X digest Y	POS	0.13816306988834706
+X convert Y	X hydrolyz Y	POS	0.13967558889286852
+X convert by Y	X metabol by Y	POS	0.16498575558977632
+X convert into Y	X convert to Y	POS	0.439115975551314
+X convert into Y	X deriv from Y	POS	0.19680330639208077
+X convert into Y	X form from Y	POS	0.26100105286478587
+X convert into Y	X metabol to Y	POS	0.06915743012010561
+X convert into Y	X reduc to Y	POS	0.2022520486593018
+X convert to Y	X convert to Y	NEG	0.9583327579814427
+X convert to Y	X deriv from Y	NEG	0.15644450433204798
+X convert to Y	X form from Y	POS	0.21938268074125092
+X convert to Y	X metabol to Y	POS	0.12124797989271753
+X convert to Y	X reduc to Y	POS	0.12894571864459778
+X correct Y	X correct by Y	POS	0.05554694794757822
+X correct Y	X correct with Y	POS	0.0
+X correct Y	X indic for Y	NEG	0.0
+X correct Y	X reliev by Y	POS	0.011550466496423837
+X correct Y	X requir Y	POS	0.07928110308826024
+X correct Y	X treat by Y	POS	0.044111957096138084
+X correct Y	X treat with Y	POS	0.03361269854922202
+X correct Y	X us for Y	POS	0.056134459919436316
+X correct by Y	X correct with Y	POS	0.21214515675537018
+X correct by Y	X give for Y	POS	0.04916186381888923
+X correct by Y	X prevent Y	POS	0.0380658844607591
+X correct by Y	X reliev Y	POS	0.02751672747374362
+X correct by Y	X reliev by Y	POS	0.10873593185221071
+X correct by Y	X requir Y	POS	0.06241031432227489
+X correct by Y	X treat by Y	POS	0.10898353138636678
+X correct by Y	X treat with Y	POS	0.024995727196514245
+X correct by Y	X us for Y	POS	0.060037258658622854
+X correct with Y	X treat by Y	POS	0.0
+X correct with Y	X treat with Y	POS	0.013945247967086611
+X correct with Y	X us for Y	POS	0.0
+X cover Y	X kill Y	POS	0.09506701019163014
+X cover Y	X treat with Y	POS	0.034513518386868336
+X creat Y	X produc Y	POS	0.19435298330673498
+X cure Y	X cure by Y	POS	0.11832893466158025
+X cure Y	X cure with Y	POS	0.0
+X cure Y	X prescrib for Y	POS	0.14109682735855364
+X cure Y	X reliev by Y	POS	0.040423619137272056
+X cure Y	X requir Y	POS	0.03730028115446366
+X cure Y	X treat by Y	POS	0.03746304427495938
+X cure Y	X treat with Y	POS	0.028262344222630898
+X cure by Y	X elimin Y	POS	0.01720696099901436
+X cure by Y	X prevent by Y	POS	0.13371372676202387
+X cure by Y	X reliev Y	POS	0.03986205770455232
+X cure by Y	X requir Y	POS	0.0489335453845051
+X cure by Y	X respond to Y	POS	0.055597418996710224
+X cure by Y	X treat by Y	POS	0.20843546468817137
+X cure by Y	X treat with Y	POS	0.054958357474289316
+X cure with Y	X treat by Y	POS	0.0
+X cure with Y	X treat with Y	POS	0.013174621967081149
+X decreas Y	X help Y	POS	0.06074830546866074
+X decreas Y	X reduc Y	POS	0.41966726269147814
+X decreas Y	X reliev Y	POS	0.19447649320536
+X decreas Y	X reliev by Y	POS	0.07951625607153888
+X decreas Y	X respond to Y	POS	0.1358894225455117
+X decreas Y	X treat with Y	POS	0.0695046588635378
+X decreas Y	X us for Y	POS	0.09466550391866155
+X defin as Y	X impli Y	POS	0.16312639215463473
+X defin as Y	X involv Y	POS	0.12216363106483491
+X defin as Y	X mean Y	POS	0.09785117151190055
+X defin as Y	X refer to Y	POS	0.17525123390947442
+X deriv from Y	X destroi Y	NEG	0.18875344921997322
+X deriv from Y	X form from Y	POS	0.32332767082369446
+X deriv from Y	X isol from Y	POS	0.22745875019198258
+X deriv from Y	X kill Y	NEG	0.12967778509731645
+X deriv from Y	X make from Y	POS	0.08767981995129871
+X deriv from Y	X obtain from Y	POS	0.4089145646704908
+X deriv from Y	X prepar from Y	POS	0.22788785539440015
+X deriv from Y	X produc Y	POS	0.21285025594633153
+X deriv from Y	X produc by Y	POS	0.3834440853813592
+X deriv from Y	X synthes from Y	POS	0.06745487579580339
+X deriv from Y	X us as Y	POS	0.19379005953573109
+X destroi Y	X kill Y	POS	0.27882312947147886
+X destroi Y	X kill by Y	POS	0.09026332937523869
+X destroi Y	X produc Y	NEG	0.16883580915279783
+X destroi Y	X produc by Y	NEG	0.17608035921499932
+X develop Y	X die of Y	NEG	0.0516329432857918
+X develop Y	X expos to Y	POS	0.1017576964950636
+X develop Y	X find in Y	POS	0.13676540387721847
+X develop Y	X have Y	POS	0.1707663574752106
+X develop Y	X occur in Y	POS	0.1389243500327169
+X develop Y	X produc Y	POS	0.18494989871744402
+X develop Y	X suffer from Y	POS	0.11683027338106403
+X develop Y	X transmit Y	POS	0.1021465551168632
+X develop after Y	X follow Y	POS	0.032835033155231515
+X develop after Y	X follow by Y	POS	0.04251957766125784
+X develop for Y	X indic for Y	POS	0.11240025163833485
+X develop for Y	X recommend for Y	POS	0.20834384869785547
+X develop for Y	X us for Y	POS	0.15724001717094702
+X develop for Y	X us in Y	POS	0.17566575181716138
+X develop from Y	X follow Y	POS	0.015583578677679804
+X develop from Y	X lead to Y	POS	0.04744451149527297
+X develop from Y	X produc Y	POS	0.05356485002659415
+X develop from Y	X result from Y	POS	0.0513092137629361
+X develop from Y	X result in Y	POS	0.0671660462966471
+X develop in Y	X occur in Y	POS	0.339527475659509
+X develop into Y	X lead to Y	POS	0.135705540123274
+X develop into Y	X progress to Y	POS	0.06893808318276727
+X develop into Y	X suggest Y	POS	0.11017258398724694
+X develop into Y	X turn into Y	POS	0.18065340801623464
+X develop into Y	X turn to Y	POS	0.14939389280801088
+X develop with Y	X produc Y	POS	0.03836414344446808
+X die from Y	X die of Y	POS	0.3883182551523435
+X die from Y	X kill Y	POS	0.0
+X die of Y	X expos to Y	NEG	0.056868323402336586
+X die of Y	X get Y	NEG	0.018187898655145147
+X die of Y	X have Y	NEG	0.039980118880179924
+X die of Y	X kill Y	POS	0.01740034368962372
+X die of Y	X suffer from Y	NEG	0.16913527063538555
+X differ from Y	X differ from Y	POS	0.957060559105811
+X differ from Y	X distinguish from Y	POS	0.2159291200568809
+X differ from Y	X includ Y	NEG	0.04778095913806739
+X differ from Y	X mistak for Y	POS	0.06895405798564662
+X differ from Y	X resembl Y	NEG	0.17758331192721402
+X differ from Y	X simul Y	NEG	0.07195473565376019
+X differenti from Y	X mimic Y	NEG	0.1638448733534433
+X differenti from Y	X resembl Y	NEG	0.0734878153809392
+X digest Y	X hydrolyz Y	POS	0.3668905868791762
+X discharg Y	X produc Y	POS	0.09018850705811446
+X discov Y	X find Y	POS	0.3435736824194205
+X discov Y	X invent Y	POS	0.17528755676770916
+X distinguish from Y	X distinguish from Y	POS	0.9764375063442141
+X distinguish from Y	X have Y	NEG	0.1463833412130142
+X distinguish from Y	X mistak for Y	POS	0.0613097150557435
+X distinguish from Y	X resembl Y	NEG	0.1732805505660018
+X distinguish from Y	X simul Y	NEG	0.1537934889352759
+X ejacul Y	X have Y	POS	0.0
+X ejacul Y	X produc Y	POS	0.008984784448017173
+X elimin Y	X erad Y	POS	0.31956888960134916
+X elimin Y	X kill Y	POS	0.06632354835908007
+X elimin Y	X prevent Y	POS	0.17652200319466785
+X elimin Y	X prevent by Y	POS	0.143956072559008
+X elimin Y	X respond to Y	POS	0.12148274663837087
+X elimin Y	X treat by Y	POS	0.06670230500035254
+X elimin Y	X treat with Y	POS	0.08984452229830926
+X elimin Y	X us against Y	POS	0.0918361915502543
+X emploi as Y	X us as Y	POS	0.23952652352383477
+X encount Y	X join with Y	POS	0.060026075593499324
+X encount Y	X meet Y	POS	0.11970519869551911
+X encount Y	X unit with Y	POS	0.05887801300071134
+X enter Y	X fertil Y	POS	0.02361024068151405
+X enter Y	X find in Y	POS	0.1408765298926797
+X enter Y	X get into Y	POS	0.18648207125917968
+X enter Y	X inject into Y	POS	0.1797704654174086
+X enter Y	X pass through Y	POS	0.4006585629200553
+X enter Y	X penetr Y	POS	0.24136659545961936
+X enter Y	X penetr by Y	POS	0.03103965942326696
+X enter Y	X reach Y	POS	0.2891297826185473
+X enter Y	X releas into Y	POS	0.06875714794879956
+X erad Y	X kill Y	POS	0.05615706587906909
+X erad Y	X treat by Y	POS	0.046296371867964405
+X erad Y	X treat with Y	POS	0.023661020651742647
+X erad Y	X us against Y	POS	0.10998338053062429
+X expos to Y	X give Y	POS	0.10434820154374146
+X expos to Y	X protect from Y	NEG	0.4483039748450972
+X fertil Y	X inject into Y	POS	0.0
+X fertil Y	X penetr Y	POS	0.10637689375002202
+X fertil Y	X penetr by Y	POS	0.05091652733628612
+X fight Y	X prevent Y	POS	0.15427765354191594
+X find Y	X invent Y	POS	0.14185065516795234
+X find Y	X produc Y	POS	0.14283387154929256
+X find in Y	X have Y	POS	0.15010652319443632
+X find in Y	X includ Y	POS	0.0748127953214136
+X find in Y	X infect with Y	POS	0.049029746958492645
+X find in Y	X isol from Y	POS	0.10806147337739597
+X find in Y	X obtain from Y	POS	0.15807662414670998
+X find in Y	X occur in Y	POS	0.2473847798073436
+X find in Y	X present Y	POS	0.17257473732351322
+X find in Y	X see in Y	POS	0.3186020753279037
+X find in Y	X transmit Y	POS	0.07931871688046525
+X find in Y	X transmit by Y	POS	0.10204779019149958
+X follow Y	X follow Y	POS	0.87529596690447
+X follow Y	X follow by Y	POS	0.2730681818730957
+X follow Y	X give to Y	POS	0.13730070817775444
+X follow Y	X lead to Y	POS	0.19492962153448637
+X follow Y	X occur after Y	POS	0.06814440491527778
+X follow Y	X occur from Y	POS	0.013091120956486929
+X follow Y	X occur with Y	POS	0.05908973887726607
+X follow Y	X preced Y	POS	0.19382510223130417
+X follow Y	X present as Y	POS	0.031856384367234855
+X follow Y	X produc Y	POS	0.15490199514080666
+X follow Y	X result from Y	POS	0.28172398091485973
+X follow Y	X result in Y	POS	0.19416732195273523
+X follow Y	X suggest Y	POS	0.08639334814593853
+X follow Y	X termin in Y	POS	0.07570248430515658
+X follow by Y	X follow by Y	POS	0.9087924604216502
+X follow by Y	X give to Y	POS	0.2050632022800864
+X follow by Y	X lead to Y	POS	0.2545166782656652
+X follow by Y	X occur after Y	POS	0.09392864784029156
+X follow by Y	X occur with Y	POS	0.054819571962331094
+X follow by Y	X preced Y	POS	0.2802177703837832
+X follow by Y	X produc Y	POS	0.20982125422619113
+X follow by Y	X result in Y	POS	0.26060639036352484
+X follow by Y	X succe to Y	POS	0.00897746251133454
+X form from Y	X metabol to Y	POS	0.06337851966414174
+X get Y	X have Y	POS	0.15810976907553925
+X get Y	X kill Y	NEG	0.11919011300230457
+X get Y	X suffer from Y	POS	0.07269697555704398
+X get into Y	X inject into Y	POS	0.21640644646574558
+X give Y	X give to Y	POS	0.4356911380201323
+X give Y	X indic for Y	POS	0.03487145156305993
+X give Y	X lead to Y	POS	0.165464870979778
+X give Y	X obtain from Y	POS	0.1126161140535694
+X give Y	X obtain with Y	POS	0.054832386362090084
+X give Y	X occur in Y	POS	0.12317709147631328
+X give Y	X offer Y	POS	0.23440385639337338
+X give Y	X prescrib for Y	POS	0.03240853462969378
+X give Y	X produc by Y	POS	0.16484604144015663
+X give Y	X provid Y	POS	0.2599922902111858
+X give Y	X provid by Y	POS	0.09898249926227581
+X give Y	X recommend for Y	POS	0.05529222158925017
+X give Y	X treat with Y	POS	0.11088612573041357
+X give Y	X us for Y	POS	0.1586369969509706
+X give Y	X us in Y	POS	0.13533620662578158
+X give as Y	X us as Y	POS	0.048704925003829905
+X give during Y	X us during Y	POS	0.0
+X give for Y	X help Y	POS	0.15076604400401392
+X give for Y	X manag with Y	POS	0.13675310693471845
+X give for Y	X need for Y	POS	0.20046632659859173
+X give for Y	X order for Y	POS	0.11318961021592475
+X give for Y	X prescrib for Y	POS	0.14728226486836407
+X give for Y	X provid from Y	POS	0.09077157065892463
+X give for Y	X recommend for Y	POS	0.15436495191692692
+X give for Y	X reduc Y	POS	0.12324536009469317
+X give for Y	X reliev Y	POS	0.052134852500936406
+X give for Y	X reliev by Y	POS	0.09603992601034839
+X give for Y	X reliev with Y	POS	0.0
+X give for Y	X requir Y	POS	0.12591484043784154
+X give for Y	X requir for Y	POS	0.1631750824833007
+X give for Y	X respond to Y	POS	0.09787942924633018
+X give for Y	X take for Y	POS	0.2576952015171684
+X give for Y	X us for Y	POS	0.126270007089125
+X give for Y	X us in Y	POS	0.10590972265841264
+X give to Y	X present with Y	POS	0.1356027436233733
+X give to Y	X produc Y	NEG	0.20154935236548477
+X give to Y	X result from Y	POS	0.23479962625776013
+X give to Y	X result in Y	POS	0.1861319457476152
+X give to Y	X take Y	POS	0.18173997777020912
+X give to Y	X treat with Y	POS	0.11815919017210619
+X give to Y	X us for Y	POS	0.1800872965679323
+X give to Y	X us in Y	POS	0.1608916032557965
+X give with Y	X treat with Y	POS	0.052922040630393644
+X give with Y	X us for Y	POS	0.04756426197062933
+X have Y	X infect with Y	POS	0.08734223051619838
+X have Y	X kill Y	NEG	0.09880815736320561
+X have Y	X obtain from Y	POS	0.17644143275148055
+X have Y	X occur in Y	POS	0.25152054929069506
+X have Y	X provid Y	POS	0.23511585044347633
+X have Y	X receiv Y	POS	0.18132271211230094
+X have Y	X suffer from Y	POS	0.12187327302642743
+X have Y	X suggest Y	POS	0.1500364556395132
+X have Y	X transmit Y	POS	0.1377618060490114
+X have Y	X transmit from Y	POS	0.045709779649935396
+X have Y	X us Y	POS	0.20356108110679447
+X have Y	X us as Y	POS	0.21512728037946205
+X have Y	X us for Y	POS	0.24403230098057585
+X help Y	X manag with Y	POS	0.05322939009043169
+X help Y	X mask Y	POS	0.03673486647692815
+X help Y	X need for Y	POS	0.1296840167523052
+X help Y	X prescrib for Y	POS	0.04390062946645688
+X help Y	X reduc Y	POS	0.08513099885612273
+X help Y	X reliev Y	POS	0.11664266797339667
+X help Y	X reliev by Y	POS	0.04818819689702484
+X help Y	X reliev with Y	POS	0.0
+X help Y	X respond to Y	POS	0.08013250188820394
+X help Y	X take for Y	POS	0.11460398360889776
+X help Y	X treat with Y	POS	0.07930747808229092
+X help Y	X us for Y	POS	0.0760406942232227
+X help with Y	X reliev Y	POS	0.05902820986564762
+X herald by Y	X preced by Y	POS	0.09682939613690303
+X hydrolyz Y	X hydrolyz by Y	POS	0.0
+X impli Y	X mean Y	POS	0.20262723214633924
+X impli Y	X refer to Y	POS	0.18811182516890473
+X improv Y	X reliev Y	POS	0.09228013877707454
+X improv Y	X reliev by Y	POS	0.06081454155501128
+X improv Y	X treat with Y	POS	0.06359014060890063
+X includ Y	X know as Y	POS	0.019055057717363436
+X includ Y	X produc by Y	POS	0.15042517059546723
+X includ Y	X refer to Y	POS	0.0778693906492509
+X includ Y	X substitut for Y	NEG	0.030866222652652913
+X includ Y	X us for Y	POS	0.1437727282650976
+X increas Y	X produc Y	POS	0.19294029716491212
+X indic Y	X lead to Y	POS	0.17013543672918227
+X indic Y	X manifest by Y	POS	0.07378809349122378
+X indic Y	X occur in Y	POS	0.16313214067614107
+X indic Y	X occur with Y	POS	0.08230474122532774
+X indic Y	X present as Y	POS	0.0811516369447384
+X indic Y	X present with Y	POS	0.06836095888933766
+X indic Y	X result from Y	POS	0.199441330403244
+X indic Y	X result in Y	POS	0.19688296840068592
+X indic Y	X see in Y	POS	0.135392414780302
+X indic Y	X suggest Y	POS	0.24007923764260164
+X indic for Y	X indic in Y	POS	0.32732430274689966
+X indic for Y	X licens for Y	POS	0.17635908844606135
+X indic for Y	X order for Y	POS	0.0
+X indic for Y	X prescrib for Y	POS	0.22848264071137622
+X indic for Y	X provid Y	POS	0.0709916379247335
+X indic for Y	X provid by Y	POS	0.044847881823657725
+X indic for Y	X recommend for Y	POS	0.16969495663875914
+X indic for Y	X reduc Y	POS	0.06739754798202197
+X induc Y	X produc Y	POS	0.2369093841962584
+X induc Y	X provid Y	POS	0.07054034086047732
+X induc by Y	X lead to Y	POS	0.1887414319602626
+X induc by Y	X produc Y	POS	0.19013069861993445
+X infect Y	X infect with Y	POS	0.2425621287146081
+X infect with Y	X occur in Y	POS	0.07870026409176638
+X infect with Y	X transmit Y	POS	0.159471760460292
+X infect with Y	X transmit by Y	POS	0.049151022230725434
+X inhibit Y	X inhibit by Y	POS	0.3853485308204455
+X inhibit Y	X prevent Y	POS	0.2922654124691969
+X inject into Y	X penetr Y	POS	0.14586875633095692
+X inject into Y	X penetr by Y	POS	0.05612596176263649
+X introduc Y	X introduc by Y	POS	0.106127573025174
+X introduc Y	X make Y	POS	0.11179216616680501
+X introduc Y	X produc Y	POS	0.10788103467129258
+X introduc by Y	X make Y	POS	0.05445956041209095
+X introduc by Y	X produc Y	POS	0.06507904977485822
+X involv Y	X mean Y	POS	0.15340405487796746
+X involv Y	X occur in Y	POS	0.29826728623181775
+X involv Y	X refer to Y	POS	0.19318915345426751
+X involv Y	X suggest Y	POS	0.1536601535884188
+X isol from Y	X obtain from Y	POS	0.3167451692435666
+X isol from Y	X produc Y	POS	0.144253847372036
+X isol from Y	X produc by Y	POS	0.19382994965348263
+X join with Y	X meet Y	POS	0.09557423901140222
+X join with Y	X unit with Y	POS	0.2122600013706892
+X kill Y	X kill by Y	POS	0.20666867449308263
+X kill Y	X produc Y	NEG	0.1072297232571474
+X kill Y	X produc by Y	NEG	0.13325235828963533
+X kill Y	X reduc Y	POS	0.06302427295356199
+X kill Y	X respond to Y	POS	0.05081803232992619
+X kill Y	X us against Y	POS	0.08279776104745121
+X know as Y	X resembl Y	NEG	0.06693869118440206
+X lead to Y	X manifest by Y	POS	0.08761213802122064
+X lead to Y	X occur after Y	POS	0.10390222996095391
+X lead to Y	X occur from Y	POS	0.04372960443228636
+X lead to Y	X occur with Y	POS	0.06343280018860106
+X lead to Y	X preced by Y	POS	0.07425926814837013
+X lead to Y	X precipit Y	POS	0.09749790038354637
+X lead to Y	X predispos to Y	POS	0.06105859200880824
+X lead to Y	X present as Y	POS	0.09196563611803067
+X lead to Y	X prevent by Y	POS	0.12349074786715639
+X lead to Y	X produc Y	POS	0.1921128911944004
+X lead to Y	X produc by Y	POS	0.23996799262445503
+X lead to Y	X progress to Y	POS	0.06706155808070896
+X lead to Y	X relat to Y	POS	0.297262960156486
+X lead to Y	X result from Y	POS	0.4311194858011027
+X lead to Y	X result in Y	POS	0.5075092894556824
+X lead to Y	X suggest Y	POS	0.15381788720026637
+X lead to Y	X turn into Y	POS	0.17397900779831219
+X licens for Y	X recommend for Y	POS	0.19187796305249324
+X licens for Y	X us for Y	POS	0.04375093033488935
+X licens for Y	X us in Y	POS	0.03474229815303072
+X make Y	X manufactur Y	POS	0.06387943746184349
+X make Y	X produc Y	POS	0.21241817332000537
+X make Y	X produc by Y	POS	0.12182965844329513
+X make Y	X produc in Y	POS	0.08955332771615201
+X make Y	X releas Y	POS	0.08734095037037241
+X make by Y	X produc Y	POS	0.0515041725109518
+X make from Y	X make of Y	POS	0.12190760608619719
+X make from Y	X prepar from Y	POS	0.02194455437852029
+X make from Y	X us as Y	POS	0.0733969670029458
+X manag with Y	X mask Y	POS	0.0
+X manag with Y	X need for Y	POS	0.06997584492352403
+X manag with Y	X prescrib for Y	POS	0.0
+X manag with Y	X reduc Y	POS	0.018496839752777834
+X manag with Y	X reliev Y	POS	0.035874162132461834
+X manag with Y	X reliev by Y	POS	0.05196692181392531
+X manag with Y	X requir for Y	POS	0.043399906019293666
+X manag with Y	X respond to Y	POS	0.02646429427914439
+X manag with Y	X treat by Y	POS	0.07240759822074978
+X manag with Y	X treat with Y	POS	0.04395484341292584
+X manag with Y	X us for Y	POS	0.0406587245435121
+X manifest as Y	X produc Y	POS	0.021321449206989505
+X manifest as Y	X result from Y	POS	0.04012960871850117
+X manifest by Y	X present with Y	POS	0.0965524907102552
+X manifest by Y	X produc Y	POS	0.06371236712444849
+X manifest by Y	X result from Y	POS	0.13398126765132576
+X manifest by Y	X result in Y	POS	0.1544365993412814
+X manifest by Y	X see in Y	POS	0.0837397809867632
+X manifest by Y	X suggest Y	POS	0.09118981581531045
+X manufactur Y	X produc Y	POS	0.11614459424665241
+X manufactur Y	X produc by Y	POS	0.04873830004224613
+X manufactur Y	X releas Y	POS	0.14674694350212275
+X mask Y	X reduc Y	POS	0.10141576969409645
+X mask Y	X reliev Y	POS	0.16959875702319185
+X mask Y	X reliev by Y	POS	0.11807165472413249
+X mask Y	X reliev with Y	POS	0.0
+X mask Y	X respond to Y	POS	0.07348340686303563
+X mask Y	X treat by Y	POS	0.0
+X mask Y	X treat with Y	POS	0.04937263777242469
+X mask Y	X us for Y	POS	0.03597739047314259
+X mean Y	X refer to Y	POS	0.11981232343652556
+X mean Y	X result from Y	POS	0.13544884459834533
+X meet Y	X meet Y	POS	0.9218183509887418
+X meet Y	X unit with Y	POS	0.07874202868391678
+X metabol by Y	X metabol in Y	POS	0.6627054171866839
+X metabol to Y	X reduc to Y	POS	0.06523784761283265
+X mistak for Y	X mistak for Y	POS	0.9426729446665605
+X need for Y	X order for Y	POS	0.07339897862339506
+X need for Y	X prescrib for Y	POS	0.11259321009746627
+X need for Y	X reduc Y	POS	0.17131188488466612
+X need for Y	X reliev Y	POS	0.10689540012291347
+X need for Y	X reliev by Y	POS	0.07672269821144587
+X need for Y	X requir Y	POS	0.19318194125342056
+X need for Y	X requir for Y	POS	0.7867591443231962
+X need for Y	X respond to Y	POS	0.09154130713352474
+X need for Y	X treat by Y	POS	0.11753967377866792
+X need for Y	X treat with Y	POS	0.06404341267350423
+X need for Y	X us for Y	POS	0.3871466575985724
+X need for Y	X us in Y	POS	0.28458489538401416
+X observ in Y	X occur in Y	POS	0.4121828348969124
+X obtain from Y	X occur in Y	POS	0.27297523860109046
+X obtain from Y	X produc Y	POS	0.18692882736724045
+X obtain from Y	X produc by Y	POS	0.27600981924291323
+X obtain from Y	X provid Y	POS	0.09350437527327246
+X obtain with Y	X offer Y	POS	0.06797786337698289
+X obtain with Y	X prescrib for Y	POS	0.07450629586122816
+X obtain with Y	X produc Y	POS	0.06695854417208909
+X obtain with Y	X provid Y	POS	0.09491995604031475
+X obtain with Y	X us for Y	POS	0.09193057454791331
+X occur after Y	X produc Y	POS	0.04216278797492806
+X occur after Y	X result from Y	POS	0.140759245352581
+X occur after Y	X result in Y	POS	0.1738515672084746
+X occur during Y	X occur in Y	POS	0.30468721212156114
+X occur from Y	X produc Y	POS	0.03238511828203237
+X occur from Y	X result from Y	POS	0.04842944387498831
+X occur from Y	X result in Y	POS	0.05633262679920298
+X occur in Y	X occur with Y	POS	0.22753542031877005
+X occur in Y	X preced by Y	POS	0.13048138073235707
+X occur in Y	X present as Y	POS	0.11882461916725306
+X occur in Y	X present with Y	POS	0.07688044443299158
+X occur in Y	X produc Y	POS	0.1942840899211973
+X occur in Y	X see in Y	POS	0.18034030985866897
+X occur in Y	X show Y	POS	0.18052309725095617
+X occur in Y	X suffer from Y	POS	0.11426063537803936
+X occur in Y	X suggest Y	POS	0.12750878222238646
+X occur in Y	X transmit Y	POS	0.06315724472508745
+X occur with Y	X present with Y	POS	0.03218822464260139
+X occur with Y	X produc Y	POS	0.05548283531953399
+X occur with Y	X result in Y	POS	0.0809793930091347
+X occur with Y	X suggest Y	POS	0.05165562735658542
+X offer Y	X produc Y	POS	0.11450857942440112
+X offer Y	X provid Y	POS	0.32105608237615124
+X offer Y	X provid by Y	POS	0.1370862671622848
+X offer Y	X us for Y	POS	0.12076819339492137
+X order for Y	X prescrib for Y	POS	0.11709594138497659
+X order for Y	X reduc Y	POS	0.02326105429178356
+X order for Y	X reliev Y	POS	0.03675267598667316
+X order for Y	X reliev by Y	POS	0.0
+X order for Y	X requir for Y	POS	0.0523903091355883
+X order for Y	X treat by Y	POS	0.0
+X order for Y	X treat with Y	POS	0.011697574679749459
+X order for Y	X us for Y	POS	0.03996152807310169
+X overcom by Y	X reliev Y	POS	0.045328554468204954
+X overcom by Y	X reliev by Y	POS	0.10819764233654974
+X overcom by Y	X treat by Y	POS	0.042763904642191077
+X overcom by Y	X treat with Y	POS	0.010931164727237938
+X penetr Y	X penetr by Y	POS	0.09975980954422733
+X preced by Y	X produc Y	POS	0.0610000930239164
+X precipit Y	X trigger Y	POS	0.19744279623561467
+X prepar from Y	X us as Y	POS	0.1149866913848804
+X prescrib for Y	X prevent Y	POS	0.08980224420283564
+X prescrib for Y	X provid Y	POS	0.07927121217213469
+X prescrib for Y	X provid from Y	POS	0.049138005281389126
+X prescrib for Y	X recommend for Y	POS	0.15421131127174298
+X prescrib for Y	X reduc Y	POS	0.05166562153569556
+X prescrib for Y	X reliev Y	POS	0.06931701734706698
+X prescrib for Y	X reliev by Y	POS	0.027829429542510678
+X prescrib for Y	X requir Y	POS	0.05800838409003367
+X prescrib for Y	X requir for Y	POS	0.11604858993416271
+X prescrib for Y	X respond to Y	POS	0.023817296081811212
+X prescrib for Y	X take for Y	POS	0.10410052527944878
+X prescrib for Y	X treat by Y	POS	0.02003271733258439
+X prescrib for Y	X treat with Y	POS	0.01988638604030529
+X prescrib for Y	X us for Y	POS	0.09485947078498805
+X prescrib for Y	X us in Y	POS	0.05712702273998919
+X present as Y	X present with Y	POS	0.19855288751027786
+X present as Y	X produc Y	POS	0.04944585118225369
+X present as Y	X result from Y	POS	0.06723225759123722
+X present as Y	X result in Y	POS	0.08373447425970149
+X present as Y	X suggest Y	POS	0.0844451690363112
+X present with Y	X produc Y	POS	0.07720657104812118
+X present with Y	X result in Y	POS	0.12782459873572782
+X present with Y	X see in Y	POS	0.06840801351455597
+X present with Y	X suggest Y	POS	0.09251064301232267
+X prevent Y	X prevent by Y	POS	0.16426322408680227
+X prevent Y	X produc Y	NEG	0.2258594892764062
+X prevent Y	X protect against Y	POS	0.2640270675307425
+X prevent Y	X protect from Y	POS	0.3105957071745075
+X prevent Y	X reduc Y	POS	0.342099698255512
+X prevent Y	X reliev Y	POS	0.16023328802834827
+X prevent Y	X requir Y	POS	0.17916644937285017
+X prevent Y	X respond to Y	POS	0.1329690327458235
+X prevent Y	X treat Y	POS	0.19512489395891705
+X prevent Y	X us against Y	POS	0.11077560497748665
+X prevent Y	X wipe Y	POS	0.07601906877241639
+X prevent by Y	X protect against Y	POS	0.14639473489332036
+X prevent by Y	X treat by Y	POS	0.09025819374504784
+X prevent by Y	X treat with Y	POS	0.07281294340687951
+X produc Y	X produc by Y	POS	0.2834188899165022
+X produc Y	X produc in Y	POS	0.2930318706209309
+X produc Y	X promot Y	POS	0.18384889760559037
+X produc Y	X provid Y	POS	0.1775282382561062
+X produc Y	X relat to Y	POS	0.16872164804938028
+X produc Y	X releas Y	POS	0.17171753968288225
+X produc Y	X result from Y	POS	0.22061417917298154
+X produc Y	X result in Y	POS	0.20888727006084018
+X produc Y	X secret Y	POS	0.17066113979747755
+X produc Y	X secret by Y	POS	0.07074940030401354
+X produc Y	X see in Y	POS	0.07840977230564602
+X produc Y	X stimul Y	POS	0.14155498193796184
+X produc Y	X suggest Y	POS	0.1167985206262418
+X produc Y	X treat by Y	NEG	0.07274254596847343
+X produc Y	X treat with Y	NEG	0.18082686305150758
+X produc Y	X us in Y	NEG	0.21817777565887234
+X produc by Y	X produc in Y	POS	0.4577226876455916
+X produc by Y	X releas Y	POS	0.13387823139142163
+X produc by Y	X result from Y	POS	0.49756260103819683
+X produc by Y	X secret Y	POS	0.0735398980478186
+X produc by Y	X secret by Y	POS	0.22612961539255677
+X promot Y	X stimul Y	POS	0.4007142114259325
+X protect against Y	X protect from Y	POS	0.5301765432129419
+X protect from Y	X reduc Y	POS	0.21493651630825691
+X provid Y	X provid by Y	POS	0.23663637966015746
+X provid Y	X recommend for Y	POS	0.07446476119637842
+X provid Y	X us for Y	POS	0.28137834844253456
+X provid by Y	X recommend for Y	POS	0.10378698493076598
+X provid by Y	X us for Y	POS	0.13275907846879628
+X provid from Y	X reduc Y	POS	0.06410583855982255
+X provid from Y	X reliev Y	POS	0.03147957728907036
+X provid from Y	X treat with Y	POS	0.0
+X provid from Y	X us for Y	POS	0.050033276702685245
+X recommend for Y	X requir for Y	POS	0.20855037204738747
+X recommend for Y	X treat with Y	POS	0.055331115184608474
+X recommend for Y	X us Y	POS	0.03416500992300653
+X recommend for Y	X us for Y	POS	0.18972187756291312
+X recommend for Y	X us in Y	POS	0.11684570543973499
+X reduc Y	X reliev Y	POS	0.28363557495067354
+X reduc Y	X reliev by Y	POS	0.07053763858310211
+X reduc Y	X reliev with Y	POS	0.01587107729652828
+X reduc Y	X respond to Y	POS	0.14798552110427698
+X reduc Y	X suppress Y	POS	0.18884491436854595
+X reduc Y	X take for Y	POS	0.10702319485061303
+X reduc Y	X treat with Y	POS	0.10317966038894211
+X reduc Y	X us for Y	POS	0.14797618251128158
+X reduc Y	X us in Y	POS	0.12215796638333405
+X relat to Y	X result from Y	POS	0.3378236493431928
+X relat to Y	X result in Y	POS	0.2517945029754865
+X relat to Y	X suggest Y	POS	0.15387603215831616
+X releas into Y	X secret into Y	POS	0.3655404742811648
+X reliev Y	X reliev by Y	POS	0.10249252074940395
+X reliev Y	X reliev with Y	POS	0.0
+X reliev Y	X requir Y	POS	0.08068900626998116
+X reliev Y	X requir for Y	POS	0.06244686708285737
+X reliev Y	X respond to Y	POS	0.07940934493028247
+X reliev Y	X take for Y	POS	0.10696289559603907
+X reliev Y	X treat by Y	POS	0.034164962035229014
+X reliev Y	X treat with Y	POS	0.016639104544445497
+X reliev Y	X us for Y	POS	0.05642083165448456
+X reliev by Y	X reliev with Y	POS	0.1232574742575851
+X reliev by Y	X requir Y	POS	0.06609247179246137
+X reliev by Y	X requir for Y	POS	0.07168752668024984
+X reliev by Y	X respond to Y	POS	0.11033842475735452
+X reliev by Y	X take for Y	POS	0.11495051550097728
+X reliev by Y	X treat by Y	POS	0.11473529513350737
+X reliev by Y	X treat with Y	POS	0.08247808822393926
+X reliev by Y	X us for Y	POS	0.04618716460808564
+X reliev with Y	X respond to Y	POS	0.059542044728362296
+X reliev with Y	X take for Y	POS	0.0
+X reliev with Y	X treat with Y	POS	0.01147991675590411
+X reliev with Y	X us for Y	POS	0.0070881719828434255
+X replac Y	X substitut for Y	POS	0.24125957960202501
+X requir Y	X requir for Y	POS	0.2706348884441502
+X requir Y	X reserv for Y	POS	0.13236101132470363
+X requir Y	X respond to Y	POS	0.11152364316365344
+X requir Y	X treat Y	POS	0.10267540367664575
+X requir Y	X treat by Y	POS	0.12460169045790323
+X requir Y	X treat with Y	POS	0.12205288320892099
+X requir Y	X us for Y	POS	0.2368689521147534
+X requir Y	X us in Y	POS	0.17223490254926088
+X requir for Y	X respond to Y	POS	0.10764669428082818
+X requir for Y	X treat by Y	POS	0.10890617722231838
+X requir for Y	X treat with Y	POS	0.06403902520517696
+X requir for Y	X us for Y	POS	0.4266343061903671
+X requir for Y	X us in Y	POS	0.3147990184634344
+X resembl Y	X simul Y	POS	0.18925412799335087
+X reserv for Y	X treat by Y	POS	0.10785265212965783
+X reserv for Y	X treat with Y	POS	0.06929065544789813
+X reserv for Y	X us for Y	POS	0.17747428461517828
+X respond to Y	X treat Y	POS	0.10466361387199866
+X respond to Y	X us for Y	POS	0.09240949820932853
+X respond to Y	X us in Y	POS	0.07056682837920217
+X respond with Y	X treat with Y	POS	0.0402897940769673
+X result from Y	X result in Y	POS	0.4665816236348562
+X result from Y	X see in Y	POS	0.10276344547445057
+X result from Y	X suggest Y	POS	0.17252253885297625
+X result in Y	X suggest Y	POS	0.12116527135774387
+X secret Y	X secret by Y	POS	0.12430035181099561
+X see in Y	X suggest Y	POS	0.1530971034183313
+X spread by Y	X transmit Y	POS	0.024797984322430734
+X spread by Y	X transmit by Y	POS	0.10812136054489953
+X spread by Y	X transmit through Y	POS	0.0
+X spread through Y	X transmit by Y	POS	0.06192390798207243
+X start with Y	X suggest Y	POS	0.07748619412558796
+X substitut for Y	X substitut for Y	POS	0.9529238798216095
+X suppress Y	X treat with Y	POS	0.03681909877898141
+X take Y	X treat with Y	POS	0.11809487233744002
+X take Y	X us in Y	POS	0.09464353991381953
+X take for Y	X treat with Y	POS	0.04678171270376944
+X take for Y	X us for Y	POS	0.1338893318723438
+X transmit Y	X transmit by Y	POS	0.10446519929393412
+X transmit Y	X transmit through Y	POS	0.0
+X transmit by Y	X transmit through Y	POS	0.2393821982712278
+X transmit through Y	X transmit via Y	POS	0.0
+X treat Y	X treat by Y	POS	0.07160171264008067
+X treat Y	X treat with Y	POS	0.10078086442382321
+X treat Y	X us for Y	POS	0.13754543804333888
+X treat by Y	X treat with Y	POS	0.26120291072242163
+X unit with Y	X unit with Y	POS	0.9740577841014574
+X us Y	X us for Y	POS	0.2727797182521166
+X us Y	X us in Y	POS	0.2991222071879591
+X us as Y	X us as Y	POS	0.9596148104220278
+X us as Y	X us for Y	POS	0.34116318393378947
+X us as Y	X us in Y	POS	0.2403941324437494
+X us during Y	X us for Y	POS	0.166519917368781
+X us during Y	X us in Y	POS	0.1655057053006997
+X us for Y	X us in Y	POS	0.6531748520782039

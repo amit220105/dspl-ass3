@@ -1,0 +1,107 @@
+
+
+Small (10 files)
+Threshold: t = 0.0264642943 (predict POS if S >= t)
+Confusion:
+TP=930, FP=42, TN=5, FN=126
+Metrics:
+Precision=0.956790
+Recall=0.880682
+F1=0.917160
+
+Large (100 files)
+Threshold: t = 0.0823973854
+Confusion:
+TP=965, FP=42, TN=6, FN=104
+Metrics:
+Precision=0.958292
+Recall=0.902713
+F1=0.929672
+
+Threshold selection
+For each run (Small=10 files, Large=100 files), a threshold t over the similarity score S 
+was selected and a pair was predicted POS if S ≥ t, otherwise NEG.  t was chosen based on the scored 
+test-set output to maximize F1 for that run (while keeping a valid confusion matrix with TP/FP/TN/FN
+for error analysis).
+
+Small: t = 0.0264642943
+Large: t = 0.0823973854
+
+Error analysis (5 examples per TP/FP/TN/FN) +
+
+------ (10 files) categories (using t_small=0.0264642943)
+
+TP (5)
+X manag with Y || X respond to Y (POS) S_small=0.026464 S_large=0.198019
+X appear in Y || X find in Y (POS) S_small=0.026495 S_large=0.205492
+X control with Y|| X help Y (POS) S_small=0.026523 S_large=0.054366
+X associ with Y || X mean Y (POS) S_small=0.027391 S_large=0.187079
+X accompani by Y|| X come with Y (POS) S_small=0.027512 S_large=0.228946
+
+FP (5)
+X includ Y || X substitut for Y (NEG) S_small=0.030866 S_large=0.126832
+X confound with Y || X differ from Y (NEG) S_small=0.034162 S_large=0.223245
+X confound with Y || X distinguish from Y (NEG) S_small=0.038011 S_large=0.290659
+X die of Y || X have Y (NEG) S_small=0.039980 S_large=0.085755
+X differ from Y || X includ Y (NEG) S_small=0.047781 S_large=0.230453
+
+TN (5)
+X confound with Y || X resembl Y (NEG) S_small=0.026317 S_large=0.184859
+X associ with Y || X distinguish from Y (NEG) S_small=0.020460 S_large=0.330677
+X die of Y || X get Y (NEG) S_small=0.018188 S_large=0.082204
+X confus with Y || X includ Y (NEG) S_small=0.016849 S_large=0.120940
+X correct Y || X indic for Y (NEG) S_small=0.000000 S_large=0.168753
+
+FN (5)
+
+X caus Y || X start with Y (POS) S_small=0.025982 S_large=0.100274
+X appear as Y || X character by Y (POS) S_small=0.025797 S_large=0.214433
+X base on Y || X compos of Y (POS) S_small=0.025301 S_large=0.088039
+X allevi Y || X give for Y (POS) S_small=0.025280 S_large=0.066082
+X carri Y || X spread by Y (POS) S_small=0.025196 S_large=0.080980
+
+------ (100 files) categories (using t_large=0.0823973854)
+TP (5)
+X improv Y || X reliev by Y (POS) S_large=0.082397 S_small=0.060815
+X caus by Y || X see in Y (POS) S_large=0.082526 S_small=0.074326
+X control by Y || X reliev with Y (POS) S_large=0.082654 S_small=0.043149
+X control by Y || X erad Y (POS) S_large=0.083318 S_small=0.038972
+X bring Y || X prescrib for Y (POS) S_large=0.084025 S_small=0.064924
+
+FP (5)
+X die of Y || X have Y (NEG) S_large=0.085755 S_small=0.039980
+X kill Y || X produc by Y (NEG) S_large=0.103632 S_small=0.133252
+X kill Y || X produc Y (NEG) S_large=0.104431 S_small=0.107230
+X develop Y || X die of Y (NEG) S_large=0.112989 S_small=0.051633
+X confus with Y || X includ Y (NEG) S_large=0.120940 S_small=0.016849
+
+TN (5)
+X know as Y || X resembl Y (NEG) S_large=0.082266 S_small=0.066939
+X die of Y || X get Y (NEG) S_large=0.082204 S_small=0.018188
+X have Y || X kill Y (NEG) S_large=0.080801 S_small=0.098808
+X deriv from Y || X kill Y (NEG) S_large=0.074267 S_small=0.129678
+X contract Y || X kill Y (NEG) S_large=0.052037 S_small=0.047884
+
+FN (5)
+X control with Y || X order for Y (POS) S_large=0.081994 S_small=0.048926
+X make Y || X produc by Y (POS) S_large=0.081894 S_small=0.121830
+X improv Y || X treat with Y (POS) S_large=0.081843 S_small=0.063590
+X control with Y || X prevent Y (POS) S_large=0.081681 S_small=0.017734
+X indic for Y || X provid by Y (POS) S_large=0.081119 S_small=0.044848
+
+Common errors and behaviours
+1) Polarity/semantic opposition: some NEG pairs still get high similarity because DIRT-style
+distributional similarity captures shared contexts, not entailment direction or polarity 
+(e.g., confound vs distinguish, include vs substitute).
+
+2) Generic predicates/features: very common fillers (generic nouns) and broad verbs can create shared 
+features across unrelated predicates, inflating similarity and producing false positives.
+
+3) Preposition ambiguity: templates that differ mainly by a preposition (with/to/from/in) may 
+still share many fillers, causing both FP and FN depending on threshold.
+
+4) Stemming effects: Porter stemming can collapse different verb forms to the same stem and sometimes
+ over-collapses (noise), increasing similarity for pairs that should be NEG.
+
+5) Data sparsity vs data growth: moving from 10→100 files generally increases MI support and raises many true 
+POS scores (reducing FN), but it can also raise some NEG scores (some FP remain).

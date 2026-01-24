@@ -1,0 +1,81 @@
+
+What the system do
+
+Extracts verb-headed dependency-path predicates with noun slots X/Y from Google Syntactic N-Grams Biarcs.
+Computes mi(p,slot,w) for every observed triple (p, slot∈{X,Y}, w).
+Computes a similarity score S for each predicate pair in the provided test set (positive/negative).
+
+Inputs
+Biarcs corpus files (Google syntactic ngrams biarcs format).
+Test set (tab-separated):
+positive-preds.txt
+negative-preds.txt
+
+Outputs (required by assignment)
+MI values: p<TAB>slot<TAB>w<TAB>mi
+Test-set similarities: p1<TAB>p2<TAB>label<TAB>S
+
+Constraints implemented
+Only paths where head is a verb and slot fillers are nouns.
+Dependency paths include prepositions (POS IN, TO) in the predicate key.
+Filters auxiliary verbs (be/is/are/was/were/been/being, have/has/had, do/does/did).
+Uses Porter stemmer to normalize predicate verbs (aligns corpus tokens with baseform
+predicates in the test set).
+
+How to run
+1) Build the jar
+mvn clean package
+
+2) Upload jar to S3
+aws s3 cp target/hadoop-examples-1.0-SNAPSHOT.jar s3://<bucket>/jars/dspl-ass3.jar
+
+3) Run EMR pipeline (JobFlowAss3)
+java -cp target/hadoop-examples-1.0-SNAPSHOT.jar hadoop.examples.JobFlowAss3 \
+  <region> <bucket> s3://<bucket>/jars/dspl-ass3.jar \
+  <inputPrefix> <runPrefix> \
+  <positivePredsS3> <negativePredsS3>
+
+Experiments
+Small: inputPrefix contains 10 biarcs files
+Large: inputPrefix contains 100 biarcs files
+
+
+Volume & memory 
+Job1 — Triple counts 
+Output record count: 46,883,022 (Reduce output records)
+Total output size: 1,243,186,511 B (~1.24 GB)
+Avg record size: ~26.5 B/record
+Mapper: parses one record + BFS/shortest-path state per record.
+Reducer: streaming sum per (p,slot,w).
+
+Job2A — Marginals
+Output record count: 1,704,555
+Total output size: 35,133,437 B (~35.1 MB)
+Avg record size: ~20.6 B/record
+Mapper: streaming emit of PS/SW/S keys.
+Reducer: streaming sums per marginal key.
+
+Job2B — Compute MI
+Output record count: 46,883,022 (Map output records)
+Total output size: 1,716,544,205 B (~1.72 GB)
+Avg record size: ~36.6 B/record
+Mapper: loads Job2A marginals into in-memory hash maps (PS, SW, S) in setup (main memory bottleneck).
+
+Job3 — Denominators
+Output record count: 802,456
+Total output size: 26,136,469 B (~26.1 MB)
+Avg record size: ~32.6 B/record
+Reducer: streaming sum of MI values per (p,slot).
+
+Job4 — Test numerators 
+Output record count: 2,749,419
+Total output size: 115,382,563 B (~115.4 MB)
+Avg record size: ~42.0 B/record
+Reducer: builds miByP map per feature (slot,w); size depends on how many predicates share the same feature.
+
+Job5 — Final similarity
+Output record count: 1,117
+Total output size: 55,908 B (~55.9 KB)
+Avg record size: ~50.1 B/record
+Mapper/Reducer setup: loads denominators map + test-pairs cache from distributed cache.
+Reducer: streaming sum for numX/numY, then computes S.
