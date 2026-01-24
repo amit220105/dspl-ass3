@@ -24,7 +24,7 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 public class Job5_FinalSimilarity {
 
-    // denom key: p \t slot  -> denom
+   
     private static final Map<String, Double> denom = new HashMap<>();
 
     private static void loadDenomsFromCache(URI[] cacheFiles) throws IOException {
@@ -37,19 +37,19 @@ public class Job5_FinalSimilarity {
     boolean loadedAny = false;
 
     for (URI uri : cacheFiles) {
-        // Use fragment if provided, else fallback to basename
+        
         String localName = (uri.getFragment() != null && !uri.getFragment().isEmpty())
                 ? uri.getFragment()
                 : new org.apache.hadoop.fs.Path(uri.getPath()).getName();
 
         String low = localName.toLowerCase(Locale.ROOT);
 
-        // skip test files
+        
         if (low.contains("positive") || low.contains("negative")) continue;
 
         File f = new File(localName);
         if (!f.exists() || !f.isFile()) {
-            // If this happens, you forgot to add "#..." fragments, or localization failed
+            
             throw new FileNotFoundException(
                     "Denoms cache file not found locally. " +
                     "Tried localName='" + localName + "' for cache URI='" + uri + "'");
@@ -61,7 +61,7 @@ public class Job5_FinalSimilarity {
                 line = line.trim();
                 if (line.isEmpty()) continue;
 
-                // Job3 output: "p \t slot \t denom"
+              
                 String[] parts = line.split("\t");
                 if (parts.length != 3) continue;
 
@@ -82,26 +82,25 @@ public class Job5_FinalSimilarity {
     }
 }
 
-    // Mapper: pass through numer contributions
+   
     public static class MapperClass extends Mapper<LongWritable, Text, Text, Text> {
-        private final Text outKey = new Text();   // p1 \t p2
-        private final Text outVal = new Text();   // slot \t contrib
+        private final Text outKey = new Text();   
+        private final Text outVal = new Text();  
 
         @Override
         protected void setup(Context context) throws IOException, InterruptedException {
-            // load test pairs too (for labeling)
+            
             TestPairsCache.loadFromCacheFiles(context.getCacheFiles());
             loadDenomsFromCache(context.getCacheFiles());
         }
 
         @Override
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-            // input is: key="p1\tp2\tslot" value="contrib"
+           
             String line = value.toString().trim();
             if (line.isEmpty()) return;
 
-            // Because TextOutputFormat writes "key\tvalue"
-            // reconstruct:
+      
             int tab = line.lastIndexOf('\t');
             if (tab < 0) return;
 
@@ -125,7 +124,7 @@ public class Job5_FinalSimilarity {
         }
     }
 
-    // Reducer: aggregate contributions per slot, compute simX/simY and final S
+    
     public static class ReducerClass extends Reducer<Text, Text, Text, Text> {
 
         @Override
@@ -143,7 +142,7 @@ public class Job5_FinalSimilarity {
             String p1 = pp[0];
             String p2 = pp[1];
 
-            // Sum numerator per slot
+         
             double numX = 0.0, numY = 0.0;
             for (Text tv : values) {
                 String[] parts = tv.toString().split("\t");
@@ -169,25 +168,19 @@ public class Job5_FinalSimilarity {
 
             double S = (simX > 0.0 && simY > 0.0) ? Math.sqrt(simX * simY) : 0.0;
 
-            // label from test set
+            
             String label = TestPairsCache.labelFor(p1, p2);
 
-            // Output: p1 \t p2   label \t simX \t simY \t S
-            // context.write(new Text(p1 + "\t" + p2),
-            //               new Text(label + "\t" + simX + "\t" + simY + "\t" + S));
-            // Output finale score
-            // context.write(new Text(p1 + "\t" + p2),
-            //   new Text(Double.toString(S)));
 
-            //pos/neg + value
+
+         
             context.write(new Text(p1 + "\t" + p2),
               new Text(label + "\t" + S));
         }
     }
 
     public static void main(String[] args) throws Exception {
-        // args:
-        // <job4NumerInput> <job3DenomsPartFileS3> <positivePredsS3> <negativePredsS3> <outFinal>
+      
         if (args.length != 5) {
             System.err.println("Usage: Job5_FinalSimilarity <numerIn> <denomsPartFile> <posPreds> <negPreds> <out>");
             System.exit(1);
@@ -197,10 +190,7 @@ public class Job5_FinalSimilarity {
         Job job = Job.getInstance(conf, "ASS3-Job5-FinalSimilarity");
         job.setJarByClass(Job5_FinalSimilarity.class);
 
-        // cache: denoms + test sets
-        // job.addCacheFile(new URI(args[1])); // Job3 denom part file
-        // job.addCacheFile(new URI(args[2])); // positive
-        // job.addCacheFile(new URI(args[3])); // negative
+       
         job.addCacheFile(new URI(args[1] + "#denoms-part.txt"));
         job.addCacheFile(new URI(args[2] + "#positive-preds.txt"));
         job.addCacheFile(new URI(args[3] + "#negative-preds.txt"));
